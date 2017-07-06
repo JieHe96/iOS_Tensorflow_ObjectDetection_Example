@@ -87,5 +87,12 @@ The Makefile is under "tensorflow/contrib/makefile/".
   - After finished the above steps, add one more Header Search path named "(your tensorflow root path)/bazel_genfiles/"
   
 ### Running
+Before you run, make sure to recompile the libtensorflow-core.a according to the modified Makefile. Otherwise, following error may exist during the runtime:
+```
+Error adding graph to session:
+No OpKernel was registered to support Op 'Less' with these attrs.  
+Registered devices: [CPU],     Registered kernels: device='CPU';
+ T in [DT_FLOAT]......
+ ```
 Once you finish the above process, you could run the project by click the build button in the Xcode
 
