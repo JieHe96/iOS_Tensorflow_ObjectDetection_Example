@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB13F7E01F0DC7E300422EB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7DF1F0DC7E300422EB4 /* main.m */; };
+		CB13F7E31F0DC7E300422EB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7E21F0DC7E300422EB4 /* AppDelegate.m */; };
+		CB13F7E61F0DC7E300422EB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7E51F0DC7E300422EB4 /* ViewController.m */; };
+		CB13F7E91F0DC7E300422EB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB13F7E71F0DC7E300422EB4 /* Main.storyboard */; };
+		CB13F7EB1F0DC7E300422EB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB13F7EA1F0DC7E300422EB4 /* Assets.xcassets */; };
+		CB13F7EE1F0DC7E300422EB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB13F7EC1F0DC7E300422EB4 /* LaunchScreen.storyboard */; };
+		CB13F7F91F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7F81F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.m */; };
+		CB13F8041F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F8031F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.m */; };
+		CB13F8121F0DC84500422EB4 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB13F8111F0DC84500422EB4 /* image2.jpg */; };
+		CB13F8151F0DD36E00422EB4 /* surfers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB13F8141F0DD36E00422EB4 /* surfers.jpg */; };
+		CB13F81A1F0DD52F00422EB4 /* ios_image_load.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB13F8171F0DD52F00422EB4 /* ios_image_load.mm */; };
+		CB13F81B1F0DD52F00422EB4 /* tensorflow_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB13F8191F0DD52F00422EB4 /* tensorflow_utils.mm */; };
+		CB13F81D1F0DD64400422EB4 /* libtensorflow-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F81C1F0DD64400422EB4 /* libtensorflow-core.a */; };
+		CB13F81F1F0DD65300422EB4 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F81E1F0DD65300422EB4 /* libprotobuf-lite.a */; };
+		CB13F8211F0DD65600422EB4 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F8201F0DD65600422EB4 /* libprotobuf.a */; };
+		CB13F8241F0DD67300422EB4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F8231F0DD67300422EB4 /* Accelerate.framework */; };
+		CB13F8261F0DDAA900422EB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F8251F0DDAA900422EB4 /* UIKit.framework */; };
+		CB13F8281F0DDAB600422EB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F8271F0DDAB600422EB4 /* AVFoundation.framework */; };
+		CB13F82A1F0DDACE00422EB4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F8291F0DDACE00422EB4 /* CoreImage.framework */; };
+		CB13F82C1F0DDADC00422EB4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */; };
+		CB13F82E1F0DDAE700422EB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */; };
+		CB13F8311F0DDB3D00422EB4 /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = CB13F82F1F0DDB3D00422EB4 /* frozen_inference_graph.pb */; };
+		CB13F8321F0DDB3D00422EB4 /* graph.pbtxt in Resources */ = {isa = PBXBuildFile; fileRef = CB13F8301F0DDB3D00422EB4 /* graph.pbtxt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB13F7F51F0DC7E400422EB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB13F7D31F0DC7E300422EB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB13F7DA1F0DC7E300422EB4;
+			remoteInfo = ex_SSD_Mobilenet_TF;
+		};
+		CB13F8001F0DC7E400422EB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB13F7D31F0DC7E300422EB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB13F7DA1F0DC7E300422EB4;
+			remoteInfo = ex_SSD_Mobilenet_TF;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CB13F7DB1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ex_SSD_Mobilenet_TF.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB13F7DF1F0DC7E300422EB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB13F7E11F0DC7E300422EB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CB13F7E21F0DC7E300422EB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CB13F7E41F0DC7E300422EB4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CB13F7E51F0DC7E300422EB4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CB13F7E81F0DC7E300422EB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CB13F7EA1F0DC7E300422EB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB13F7ED1F0DC7E300422EB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CB13F7EF1F0DC7E300422EB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB13F7F41F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ex_SSD_Mobilenet_TFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB13F7F81F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ex_SSD_Mobilenet_TFTests.m; sourceTree = "<group>"; };
+		CB13F7FA1F0DC7E400422EB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB13F7FF1F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ex_SSD_Mobilenet_TFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB13F8031F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ex_SSD_Mobilenet_TFUITests.m; sourceTree = "<group>"; };
+		CB13F8051F0DC7E400422EB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB13F8111F0DC84500422EB4 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image2.jpg; path = image/image2.jpg; sourceTree = SOURCE_ROOT; };
+		CB13F8141F0DD36E00422EB4 /* surfers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = surfers.jpg; path = image/surfers.jpg; sourceTree = "<group>"; };
+		CB13F8161F0DD52F00422EB4 /* ios_image_load.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ios_image_load.h; sourceTree = "<group>"; };
+		CB13F8171F0DD52F00422EB4 /* ios_image_load.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ios_image_load.mm; sourceTree = "<group>"; };
+		CB13F8181F0DD52F00422EB4 /* tensorflow_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tensorflow_utils.h; sourceTree = "<group>"; };
+		CB13F8191F0DD52F00422EB4 /* tensorflow_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tensorflow_utils.mm; sourceTree = "<group>"; };
+		CB13F81C1F0DD64400422EB4 /* libtensorflow-core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtensorflow-core.a"; path = "../../../contrib/makefile/gen/lib/libtensorflow-core.a"; sourceTree = "<group>"; };
+		CB13F81E1F0DD65300422EB4 /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libprotobuf-lite.a"; path = "../../../contrib/makefile/gen/protobuf_ios/lib/libprotobuf-lite.a"; sourceTree = "<group>"; };
+		CB13F8201F0DD65600422EB4 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a; sourceTree = "<group>"; };
+		CB13F8231F0DD67300422EB4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		CB13F8251F0DDAA900422EB4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CB13F8271F0DDAB600422EB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CB13F8291F0DDACE00422EB4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CB13F82F1F0DDB3D00422EB4 /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = frozen_inference_graph.pb; path = ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb; sourceTree = "<group>"; };
+		CB13F8301F0DDB3D00422EB4 /* graph.pbtxt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graph.pbtxt; path = ssd_mobilenet_v1_coco_11_06_2017/graph.pbtxt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB13F7D81F0DC7E300422EB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB13F82E1F0DDAE700422EB4 /* CoreGraphics.framework in Frameworks */,
+				CB13F82C1F0DDADC00422EB4 /* CoreMedia.framework in Frameworks */,
+				CB13F82A1F0DDACE00422EB4 /* CoreImage.framework in Frameworks */,
+				CB13F8281F0DDAB600422EB4 /* AVFoundation.framework in Frameworks */,
+				CB13F8261F0DDAA900422EB4 /* UIKit.framework in Frameworks */,
+				CB13F8241F0DD67300422EB4 /* Accelerate.framework in Frameworks */,
+				CB13F81F1F0DD65300422EB4 /* libprotobuf-lite.a in Frameworks */,
+				CB13F8211F0DD65600422EB4 /* libprotobuf.a in Frameworks */,
+				CB13F81D1F0DD64400422EB4 /* libtensorflow-core.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB13F7F11F0DC7E400422EB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB13F7FC1F0DC7E400422EB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB13F7D21F0DC7E300422EB4 = {
+			isa = PBXGroup;
+			children = (
+				CB13F8331F0DE67800422EB4 /* TF_Graph */,
+				CB13F8131F0DC84C00422EB4 /* image */,
+				CB13F7DD1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */,
+				CB13F7F71F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests */,
+				CB13F8021F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests */,
+				CB13F7DC1F0DC7E300422EB4 /* Products */,
+				CB13F8221F0DD67300422EB4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CB13F7DC1F0DC7E300422EB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F7DB1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF.app */,
+				CB13F7F41F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.xctest */,
+				CB13F7FF1F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB13F7DD1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F8161F0DD52F00422EB4 /* ios_image_load.h */,
+				CB13F8171F0DD52F00422EB4 /* ios_image_load.mm */,
+				CB13F8181F0DD52F00422EB4 /* tensorflow_utils.h */,
+				CB13F8191F0DD52F00422EB4 /* tensorflow_utils.mm */,
+				CB13F7E11F0DC7E300422EB4 /* AppDelegate.h */,
+				CB13F7E21F0DC7E300422EB4 /* AppDelegate.m */,
+				CB13F7E41F0DC7E300422EB4 /* ViewController.h */,
+				CB13F7E51F0DC7E300422EB4 /* ViewController.m */,
+				CB13F7E71F0DC7E300422EB4 /* Main.storyboard */,
+				CB13F7EA1F0DC7E300422EB4 /* Assets.xcassets */,
+				CB13F7EC1F0DC7E300422EB4 /* LaunchScreen.storyboard */,
+				CB13F7EF1F0DC7E300422EB4 /* Info.plist */,
+				CB13F7DE1F0DC7E300422EB4 /* Supporting Files */,
+			);
+			path = ex_SSD_Mobilenet_TF;
+			sourceTree = "<group>";
+		};
+		CB13F7DE1F0DC7E300422EB4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F7DF1F0DC7E300422EB4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB13F7F71F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F7F81F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.m */,
+				CB13F7FA1F0DC7E400422EB4 /* Info.plist */,
+			);
+			path = ex_SSD_Mobilenet_TFTests;
+			sourceTree = "<group>";
+		};
+		CB13F8021F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F8031F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.m */,
+				CB13F8051F0DC7E400422EB4 /* Info.plist */,
+			);
+			path = ex_SSD_Mobilenet_TFUITests;
+			sourceTree = "<group>";
+		};
+		CB13F8131F0DC84C00422EB4 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F8141F0DD36E00422EB4 /* surfers.jpg */,
+				CB13F8111F0DC84500422EB4 /* image2.jpg */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		CB13F8221F0DD67300422EB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F81C1F0DD64400422EB4 /* libtensorflow-core.a */,
+				CB13F81E1F0DD65300422EB4 /* libprotobuf-lite.a */,
+				CB13F8201F0DD65600422EB4 /* libprotobuf.a */,
+				CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */,
+				CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */,
+				CB13F8291F0DDACE00422EB4 /* CoreImage.framework */,
+				CB13F8271F0DDAB600422EB4 /* AVFoundation.framework */,
+				CB13F8251F0DDAA900422EB4 /* UIKit.framework */,
+				CB13F8231F0DD67300422EB4 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB13F8331F0DE67800422EB4 /* TF_Graph */ = {
+			isa = PBXGroup;
+			children = (
+				CB13F82F1F0DDB3D00422EB4 /* frozen_inference_graph.pb */,
+				CB13F8301F0DDB3D00422EB4 /* graph.pbtxt */,
+			);
+			name = TF_Graph;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB13F7DA1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB13F8081F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TF" */;
+			buildPhases = (
+				CB13F7D71F0DC7E300422EB4 /* Sources */,
+				CB13F7D81F0DC7E300422EB4 /* Frameworks */,
+				CB13F7D91F0DC7E300422EB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ex_SSD_Mobilenet_TF;
+			productName = ex_SSD_Mobilenet_TF;
+			productReference = CB13F7DB1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB13F7F31F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB13F80B1F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TFTests" */;
+			buildPhases = (
+				CB13F7F01F0DC7E400422EB4 /* Sources */,
+				CB13F7F11F0DC7E400422EB4 /* Frameworks */,
+				CB13F7F21F0DC7E400422EB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB13F7F61F0DC7E400422EB4 /* PBXTargetDependency */,
+			);
+			name = ex_SSD_Mobilenet_TFTests;
+			productName = ex_SSD_Mobilenet_TFTests;
+			productReference = CB13F7F41F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB13F7FE1F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB13F80E1F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TFUITests" */;
+			buildPhases = (
+				CB13F7FB1F0DC7E400422EB4 /* Sources */,
+				CB13F7FC1F0DC7E400422EB4 /* Frameworks */,
+				CB13F7FD1F0DC7E400422EB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB13F8011F0DC7E400422EB4 /* PBXTargetDependency */,
+			);
+			name = ex_SSD_Mobilenet_TFUITests;
+			productName = ex_SSD_Mobilenet_TFUITests;
+			productReference = CB13F7FF1F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB13F7D31F0DC7E300422EB4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "He Caiguang";
+				TargetAttributes = {
+					CB13F7DA1F0DC7E300422EB4 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = VMTBXSF6RT;
+						ProvisioningStyle = Automatic;
+					};
+					CB13F7F31F0DC7E400422EB4 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CB13F7DA1F0DC7E300422EB4;
+					};
+					CB13F7FE1F0DC7E400422EB4 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CB13F7DA1F0DC7E300422EB4;
+					};
+				};
+			};
+			buildConfigurationList = CB13F7D61F0DC7E300422EB4 /* Build configuration list for PBXProject "ex_SSD_Mobilenet_TF" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB13F7D21F0DC7E300422EB4;
+			productRefGroup = CB13F7DC1F0DC7E300422EB4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB13F7DA1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */,
+				CB13F7F31F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests */,
+				CB13F7FE1F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB13F7D91F0DC7E300422EB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB13F7EE1F0DC7E300422EB4 /* LaunchScreen.storyboard in Resources */,
+				CB13F7EB1F0DC7E300422EB4 /* Assets.xcassets in Resources */,
+				CB13F8121F0DC84500422EB4 /* image2.jpg in Resources */,
+				CB13F8321F0DDB3D00422EB4 /* graph.pbtxt in Resources */,
+				CB13F8151F0DD36E00422EB4 /* surfers.jpg in Resources */,
+				CB13F8311F0DDB3D00422EB4 /* frozen_inference_graph.pb in Resources */,
+				CB13F7E91F0DC7E300422EB4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB13F7F21F0DC7E400422EB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB13F7FD1F0DC7E400422EB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB13F7D71F0DC7E300422EB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB13F7E61F0DC7E300422EB4 /* ViewController.m in Sources */,
+				CB13F81A1F0DD52F00422EB4 /* ios_image_load.mm in Sources */,
+				CB13F7E31F0DC7E300422EB4 /* AppDelegate.m in Sources */,
+				CB13F81B1F0DD52F00422EB4 /* tensorflow_utils.mm in Sources */,
+				CB13F7E01F0DC7E300422EB4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB13F7F01F0DC7E400422EB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB13F7F91F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB13F7FB1F0DC7E400422EB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB13F8041F0DC7E400422EB4 /* ex_SSD_Mobilenet_TFUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB13F7F61F0DC7E400422EB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB13F7DA1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */;
+			targetProxy = CB13F7F51F0DC7E400422EB4 /* PBXContainerItemProxy */;
+		};
+		CB13F8011F0DC7E400422EB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB13F7DA1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */;
+			targetProxy = CB13F8001F0DC7E400422EB4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CB13F7E71F0DC7E300422EB4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB13F7E81F0DC7E300422EB4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CB13F7EC1F0DC7E300422EB4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB13F7ED1F0DC7E300422EB4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB13F8061F0DC7E400422EB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB13F8071F0DC7E400422EB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB13F8091F0DC7E400422EB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				DEVELOPMENT_TEAM = VMTBXSF6RT;
+				ENABLE_BITCODE = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				HEADER_SEARCH_PATHS = (
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/eigen,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/protobuf/src,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/proto,
+					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/bazel-genfiles",
+				);
+				INFOPLIST_FILE = ex_SSD_Mobilenet_TF/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib,
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TF";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		CB13F80A1F0DC7E400422EB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				DEVELOPMENT_TEAM = VMTBXSF6RT;
+				ENABLE_BITCODE = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				HEADER_SEARCH_PATHS = (
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/eigen,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/protobuf/src,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/proto,
+					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/bazel-genfiles",
+				);
+				INFOPLIST_FILE = ex_SSD_Mobilenet_TF/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib,
+					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib,
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TF";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		CB13F80C1F0DC7E400422EB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ex_SSD_Mobilenet_TFTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TFTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ex_SSD_Mobilenet_TF.app/ex_SSD_Mobilenet_TF";
+			};
+			name = Debug;
+		};
+		CB13F80D1F0DC7E400422EB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ex_SSD_Mobilenet_TFTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TFTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ex_SSD_Mobilenet_TF.app/ex_SSD_Mobilenet_TF";
+			};
+			name = Release;
+		};
+		CB13F80F1F0DC7E400422EB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ex_SSD_Mobilenet_TFUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TFUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ex_SSD_Mobilenet_TF;
+			};
+			name = Debug;
+		};
+		CB13F8101F0DC7E400422EB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ex_SSD_Mobilenet_TFUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TFUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ex_SSD_Mobilenet_TF;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB13F7D61F0DC7E300422EB4 /* Build configuration list for PBXProject "ex_SSD_Mobilenet_TF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB13F8061F0DC7E400422EB4 /* Debug */,
+				CB13F8071F0DC7E400422EB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB13F8081F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB13F8091F0DC7E400422EB4 /* Debug */,
+				CB13F80A1F0DC7E400422EB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CB13F80B1F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TFTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB13F80C1F0DC7E400422EB4 /* Debug */,
+				CB13F80D1F0DC7E400422EB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CB13F80E1F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TFUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB13F80F1F0DC7E400422EB4 /* Debug */,
+				CB13F8101F0DC7E400422EB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB13F7D31F0DC7E300422EB4 /* Project object */;
+}
