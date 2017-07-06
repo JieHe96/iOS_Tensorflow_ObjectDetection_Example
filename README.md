@@ -87,7 +87,7 @@ The Makefile is under "tensorflow/contrib/makefile/".
   - After finished the above steps, add one more Header Search path named "(your tensorflow root path)/bazel_genfiles/"
   
 ### Running
-Before you run, make sure to recompile the libtensorflow-core.a according to the modified Makefile. Otherwise, following error may exist during the runtime:
+Before you run, make sure to recompile the libtensorflow-core.a according to the modified Makefile. Otherwise, following error may be generated during the runtime:
 ```
 Error adding graph to session:
 No OpKernel was registered to support Op 'Less' with these attrs.  
