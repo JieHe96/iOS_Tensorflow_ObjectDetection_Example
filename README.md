@@ -97,4 +97,4 @@ Registered devices: [CPU],     Registered kernels: device='CPU';
 Once you finish the above process, you could run the project by click the build button in the Xcode
 
 ### Result
-ios_SSDMobilenet_tensorflow_example/ios_result.png
+![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/ios_SSDMobilenet_tensorflow_example/ios_result.png)
