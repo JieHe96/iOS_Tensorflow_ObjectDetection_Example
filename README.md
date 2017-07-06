@@ -61,14 +61,24 @@ The Makefile is under "tensorflow/contrib/makefile/".
   tensorflow/cc/ops/nn_ops.cc
   ```  
 #### 3.Build Tensorflow iOS library
-Follow the below instruction to build the library needed for iOS build:
-https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/ios#building-the-tensorflow-ios-libraries-from-source
-Make sure the script have generated the following .a files:
-```
-tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a
-tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a
-tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf-lite.a
-```
+  - Download the dependencies:
+  ```
+  tensorflow/contrib/makefile/download_dependencies.sh
+  ```
+  - Next, you will need to compile protobufs for iOS:
+  ```
+  tensorflow/contrib/makefile/compile_ios_protobuf.sh 
+  ```
+  - Then create the libtensorflow-core.a:
+  ```
+  tensorflow/contrib/makefile/compile_ios_tensorflow.sh "-O3  -DANDROID_TYPES=ANDROID_TYPES_FULL"
+  ```
+  Make sure the script have generated the following .a files:
+  ```
+  tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a
+  tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a
+  tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf-lite.a
+  ```
 #### 4.Xocde Configuration
   - Open xcode example, put the model and label file you just downloaded into "TF_Graph" folder in the project
   - Follow the link for configuration:
