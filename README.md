@@ -23,6 +23,11 @@ Download this repository to local and put the directory into the tensorflow dire
 #### 5.Graph Download
 Follow the below instruction to download the ssd_mobilenet_v1 model:
 https://github.com/tensorflow/models/blob/master/object_detection/g3doc/detection_model_zoo.md
+You should get a model file and a label file:
+```
+frozen_inference_graph.pb
+graph.pbtxt
+```
 
 ### Build
 #### 1.Build Bazel
@@ -34,6 +39,8 @@ Get into your tensorflow root directory then run this command:
 ```
 $ bazel build --config opt tensorflow/examples/multibox_detector/...
 ```
+(ps: It may take some time for the build process complete.)
+
 After the build process complete, a "bazel-genfiles" folder will be created in the tensorflow root. Copy the following files to "tensorflow/cc/ops/":
 ```
 bazel-genfiles/tensorflow/cc/ops/math_ops.cc
@@ -41,3 +48,34 @@ bazel-genfiles/tensorflow/cc/ops/nn_ops.cc
 bazel-genfiles/tensorflow/cc/ops/math_ops.h
 bazel-genfiles/tensorflow/cc/ops/nn_ops.h
 ```
+#### 2.Change Makefile
+The Makefile is under "tensorflow/contrib/makefile/".
+  - In the Makefile, first delete the line "-D__ANDROID_TYPES_SLIM__ \" under "# Settings for iOS." for all "$(IOS_ARCH)".
+  - Add the following source files into Makefile before the line "ifdef HEXAGON_LIBS":
+  ```
+  TF_CC_SRCS += \
+  tensorflow/cc/framework/scope.cc \
+  tensorflow/cc/framework/ops.cc \
+  tensorflow/cc/ops/const_op.cc \
+  tensorflow/cc/ops/math_ops.cc \
+  tensorflow/cc/ops/nn_ops.cc
+  ```  
+#### 3.Build Tensorflow iOS library
+Follow the below instruction to build the library needed for iOS build:
+https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/ios#building-the-tensorflow-ios-libraries-from-source
+Make sure the script have generated the following .a files:
+```
+tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a
+tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a
+tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf-lite.a
+```
+#### 4.Xocde Configuration
+  - Open xcode example, put the model and label file you just downloaded into "TF_Graph" folder in the project
+  - Follow the link for configuration:
+  https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/ios#creating-your-own-app-from-your-source-libraries
+  (ps: you need to contain a absolute path of "libtensorflow-core.a" after the "-force_load" option)
+  - After finished the above steps, add one more Header Search path named "(your tensorflow root path)/bazel_genfiles/"
+  
+### Running
+Once you finish the above process, you could run the project by click the build button in the Xcode
+
