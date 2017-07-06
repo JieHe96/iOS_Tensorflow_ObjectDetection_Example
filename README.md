@@ -1,10 +1,10 @@
-# Tensorflow IOS SSDMobilenet Example
+# Tensorflow iOS SSDMobilenet Example
 
-This example gives a demo of loading a SSDMobilenet model to the IOS platform and using it to do the object detection work.
+This example gives a demo of loading a SSDMobilenet model to the iOS platform and using it to do the object detection work.
 
 ## Introduciton
 
-Recently Google released the Tensorflow Object Detection API which includes the selection of multiple models. However, the API does not contain a IOS version of implementation. Therefore, for this example, I wrote a IOS implementation of the object detection API, including the SSDMobilenet model. For this example, it maintains the same functionality as the python version of object detection API. Furthermore, the IOS code is derived from Google tensorflow ios_camera_example.
+Recently Google released the Tensorflow Object Detection API which includes the selection of multiple models. However, the API does not contain a iOS version of implementation. Therefore, in this example, I wrote a IOS implementation of the object detection API, including the SSDMobilenet model. For this example, it maintains the same functionality as the python version of object detection API. Furthermore, the IOS code is derived from Google tensorflow ios_camera_example.
 
 ## Prerequisites
 
@@ -73,7 +73,7 @@ The Makefile is under "tensorflow/contrib/makefile/".
   ```
   tensorflow/contrib/makefile/compile_ios_tensorflow.sh "-O3  -DANDROID_TYPES=ANDROID_TYPES_FULL"
   ```
-  Make sure the script have generated the following .a files:
+  Make sure the script has generated the following .a files:
   ```
   tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a
   tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a
