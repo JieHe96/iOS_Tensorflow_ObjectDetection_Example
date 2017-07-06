@@ -10,20 +10,34 @@ Recently Google released the Tensorflow Object Detection API which includes the 
 
 
 ### Installing
-#### Xcode
+#### 1.Xcode
 You’ll need Xcode 7.3 or later.
-#### Tensorflow
+#### 2.Tensorflow
 Download the Google Tensorflow repository to local:
 https://github.com/tensorflow/tensorflow
-#### Bazel
+#### 3.Bazel
 If you don't have Bazel, please follow the Bazel's official installation process:
 https://docs.bazel.build/versions/master/install.html
-#### Example Download
+#### 4.Example Download
 Download this repository to local and put the directory into the tensorflow directory you just downloaded.
-#### Graph Download
+#### 5.Graph Download
 Follow the below instruction to download the ssd_mobilenet_v1 model:
 https://github.com/tensorflow/models/blob/master/object_detection/g3doc/detection_model_zoo.md
 
 ### Build
+#### 1.Build Bazel
+Before you could run the project, you need to build some bazel depedicies by following the Google instruction:
+If this is your first time build Bazel, please follow the below link to configure the installation:
+https://www.tensorflow.org/install/install_sources#configure_the_installation
 
-
+Get into your tensorflow root directory then run this command:
+```
+$ bazel build --config opt tensorflow/examples/multibox_detector/...
+```
+After the build process complete, a "bazel-genfiles" folder will be created in the tensorflow root. Copy the following files to "tensorflow/cc/ops/":
+```
+bazel-genfiles/tensorflow/cc/ops/math_ops.cc
+bazel-genfiles/tensorflow/cc/ops/nn_ops.cc
+bazel-genfiles/tensorflow/cc/ops/math_ops.h
+bazel-genfiles/tensorflow/cc/ops/nn_ops.h
+```
