@@ -289,7 +289,7 @@
 				TargetAttributes = {
 					CB13F7DA1F0DC7E300422EB4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VMTBXSF6RT;
+						DevelopmentTeam = BCSU55NVMD;
 						ProvisioningStyle = Automatic;
 					};
 					CB13F7F31F0DC7E400422EB4 = {
@@ -516,27 +516,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
-				DEVELOPMENT_TEAM = VMTBXSF6RT;
+				DEVELOPMENT_TEAM = BCSU55NVMD;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				HEADER_SEARCH_PATHS = (
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/eigen,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/protobuf/src,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/proto,
-					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/bazel-genfiles",
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/eigen,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/protobuf/src,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/proto,
+					"/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/bazel-genfiles",
 				);
 				INFOPLIST_FILE = ex_SSD_Mobilenet_TF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a",
+					"/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TF";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,27 +549,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
-				DEVELOPMENT_TEAM = VMTBXSF6RT;
+				DEVELOPMENT_TEAM = BCSU55NVMD;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				HEADER_SEARCH_PATHS = (
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/eigen,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/protobuf/src,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/proto,
-					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/bazel-genfiles",
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/eigen,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads/protobuf/src,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/proto,
+					"/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/bazel-genfiles",
 				);
 				INFOPLIST_FILE = ex_SSD_Mobilenet_TF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib,
-					/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib,
+					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"/Users/hecaiguang/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a",
+					"/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/gen/lib/libtensorflow-core.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TF";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -642,6 +642,7 @@
 				CB13F80A1F0DC7E400422EB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB13F80B1F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TFTests" */ = {
 			isa = XCConfigurationList;
@@ -650,6 +651,7 @@
 				CB13F80D1F0DC7E400422EB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB13F80E1F0DC7E400422EB4 /* Build configuration list for PBXNativeTarget "ex_SSD_Mobilenet_TFUITests" */ = {
 			isa = XCConfigurationList;
@@ -658,6 +660,7 @@
 				CB13F8101F0DC7E400422EB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
