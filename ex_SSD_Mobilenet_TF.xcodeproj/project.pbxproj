@@ -29,7 +29,8 @@
 		CB13F82C1F0DDADC00422EB4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */; };
 		CB13F82E1F0DDAE700422EB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */; };
 		CB13F8311F0DDB3D00422EB4 /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = CB13F82F1F0DDB3D00422EB4 /* frozen_inference_graph.pb */; };
-		CB13F8321F0DDB3D00422EB4 /* graph.pbtxt in Resources */ = {isa = PBXBuildFile; fileRef = CB13F8301F0DDB3D00422EB4 /* graph.pbtxt */; };
+		E7B0BD201F14F36B00B79DEB /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */; };
+		E7B0BD221F14F3D000B79DEB /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = E7B0BD211F14F3D000B79DEB /* mscoco_label_map.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +83,9 @@
 		CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CB13F82F1F0DDB3D00422EB4 /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = frozen_inference_graph.pb; path = ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb; sourceTree = "<group>"; };
-		CB13F8301F0DDB3D00422EB4 /* graph.pbtxt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graph.pbtxt; path = ssd_mobilenet_v1_coco_11_06_2017/graph.pbtxt; sourceTree = "<group>"; };
+		E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_int_label_map.pb.cc; sourceTree = "<group>"; };
+		E7B0BD1F1F14F36B00B79DEB /* string_int_label_map.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_int_label_map.pb.h; sourceTree = "<group>"; };
+		E7B0BD211F14F3D000B79DEB /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 		CB13F7DD1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF */ = {
 			isa = PBXGroup;
 			children = (
+				E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */,
+				E7B0BD1F1F14F36B00B79DEB /* string_int_label_map.pb.h */,
 				CB13F8161F0DD52F00422EB4 /* ios_image_load.h */,
 				CB13F8171F0DD52F00422EB4 /* ios_image_load.mm */,
 				CB13F8181F0DD52F00422EB4 /* tensorflow_utils.h */,
@@ -216,8 +221,8 @@
 		CB13F8331F0DE67800422EB4 /* TF_Graph */ = {
 			isa = PBXGroup;
 			children = (
+				E7B0BD211F14F3D000B79DEB /* mscoco_label_map.txt */,
 				CB13F82F1F0DDB3D00422EB4 /* frozen_inference_graph.pb */,
-				CB13F8301F0DDB3D00422EB4 /* graph.pbtxt */,
 			);
 			name = TF_Graph;
 			sourceTree = "<group>";
@@ -331,8 +336,8 @@
 			files = (
 				CB13F7EE1F0DC7E300422EB4 /* LaunchScreen.storyboard in Resources */,
 				CB13F7EB1F0DC7E300422EB4 /* Assets.xcassets in Resources */,
+				E7B0BD221F14F3D000B79DEB /* mscoco_label_map.txt in Resources */,
 				CB13F8121F0DC84500422EB4 /* image2.jpg in Resources */,
-				CB13F8321F0DDB3D00422EB4 /* graph.pbtxt in Resources */,
 				CB13F8151F0DD36E00422EB4 /* surfers.jpg in Resources */,
 				CB13F8311F0DDB3D00422EB4 /* frozen_inference_graph.pb in Resources */,
 				CB13F7E91F0DC7E300422EB4 /* Main.storyboard in Resources */,
@@ -361,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB13F7E61F0DC7E300422EB4 /* ViewController.m in Sources */,
+				E7B0BD201F14F36B00B79DEB /* string_int_label_map.pb.cc in Sources */,
 				CB13F81A1F0DD52F00422EB4 /* ios_image_load.mm in Sources */,
 				CB13F7E31F0DC7E300422EB4 /* AppDelegate.m in Sources */,
 				CB13F81B1F0DD52F00422EB4 /* tensorflow_utils.mm in Sources */,
@@ -519,6 +525,8 @@
 				DEVELOPMENT_TEAM = BCSU55NVMD;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow,
 					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,
@@ -552,6 +560,8 @@
 				DEVELOPMENT_TEAM = BCSU55NVMD;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow,
 					/Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/tensorflow/contrib/makefile/downloads,

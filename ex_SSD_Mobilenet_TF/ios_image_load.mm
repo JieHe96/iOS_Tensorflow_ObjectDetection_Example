@@ -20,6 +20,9 @@
 #include <stdio.h>
 
 #import <UIKit/UIImage.h>
+#import <UIKit/UIFont.h>
+#import <UIKit/NSStringDrawing.h>
+#import <UIKit/UIGraphics.h>
 #import <CoreImage/CoreImage.h>
 #import <ImageIO/ImageIO.h>
 
@@ -175,6 +178,7 @@ LoadImageFromFileAndScale(const char* file_name,
     out_channels = channels;
     return 0;
 }
+UIImage* drawText(UIImage* image);
 
 int SaveImageFromRawData(std::string file_name, void * image_data, int width, int height, int channels)
 {
@@ -188,10 +192,37 @@ int SaveImageFromRawData(std::string file_name, void * image_data, int width, in
                                                  bits_per_component, bytes_per_row, color_space,
                                                  kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
     CGColorSpaceRelease(color_space);
+
+    //if no transform, the text will be rotated
+    CGAffineTransform normalState=CGContextGetCTM(context);
+    CGContextTranslateCTM(context, 0, height);
+    CGContextScaleCTM(context, 1, -1);
     
+    
+    UIGraphicsPushContext(context);
+    //draw text
+    NSString *text1 = @"person";
+    UIColor *textColor =[UIColor colorWithRed:0.99f green:0.99f blue:0.99f alpha:1.0f];
+    UIFont *helveticaBold = [UIFont fontWithName:@"HelveticaNeue-Bold" size:30.0f];
+    NSDictionary *dicAttribute = @{NSFontAttributeName:helveticaBold, NSForegroundColorAttributeName:textColor};
+    CGRect textRect = CGRectMake(100, 120, 100, 200);
+    [text1  drawWithRect:textRect options:NSStringDrawingUsesLineFragmentOrigin
+                 attributes:dicAttribute context:nil];
+
+    //draw rect
+    CGContextSetRGBStrokeColor(context, 0.5, 0.5, 0.5, 0.5);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextAddRect(context, CGRectMake(100, 100, 270, 270));
+    CGContextStrokePath(context);
+    
+    
+    UIGraphicsPopContext();
+
+    CGContextConcatCTM(context, normalState);
     
     CGImageRef toCGImage = CGBitmapContextCreateImage(context);
     UIImage * uiimage = [[UIImage alloc] initWithCGImage:toCGImage];
+    
     
     NSData * png = UIImagePNGRepresentation(uiimage);
     NSString *file_str=[NSString stringWithCString:file_name.c_str() encoding:[NSString defaultCStringEncoding]];
@@ -202,4 +233,30 @@ int SaveImageFromRawData(std::string file_name, void * image_data, int width, in
     CFRelease(toCGImage);
 
     return 0;
+}
+
+
+UIImage* drawText(UIImage* image)
+{
+    NSString *text1 = @"person";
+    //UIFont *font = [UIFont boldSystemFontOfSize:12];
+    UIGraphicsBeginImageContext(image.size);
+    [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)]; //image.size.
+    UIColor *textColor =[UIColor colorWithRed:0.5f green:0.0f blue:0.5f alpha:1.0f];
+    //  UIColor *textColor = [UIColor redColor];
+    
+    UIFont *helveticaBold = [UIFont fontWithName:@"HelveticaNeue-Bold" size:30.0f];
+    //  UIFont *helveticaBold = [UIFont boldSystemFontOfSize:30];
+    
+    NSDictionary *dicAttribute = @{
+                                   NSFontAttributeName:helveticaBold,
+                                   NSForegroundColorAttributeName:textColor
+                                   };
+    CGRect textRect = CGRectMake(100, 120, 100, 200);
+    [text1  drawWithRect:textRect options:NSStringDrawingUsesLineFragmentOrigin
+              attributes:dicAttribute context:nil];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }

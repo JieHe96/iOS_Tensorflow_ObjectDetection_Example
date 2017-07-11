@@ -25,6 +25,9 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension);
 tensorflow::Status LoadLabels(NSString* file_name, NSString* file_type,
                               std::vector<std::string>* label_strings);
 
-int runModel(NSString* file_name, NSString* file_type, void ** image_data, int *width, int *height, int *channels);
-
+int runModel(NSString* file_name, NSString* file_type,
+             void ** image_data, int *width, int *height, int *channels,
+             std::vector<float>& boxScore,
+             std::vector<float>& boxRect,
+             std::vector<std::string>& boxName);
 #endif  // TENSORFLOW_CONTRIB_IOS_EXAMPLES_CAMERA_TENSORFLOW_UTILS_H_

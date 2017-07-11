@@ -31,6 +31,91 @@ using tensorflow::uint8;
 #include <sstream>
 #include <string>
 
+
+#if 1
+
+#include <google/protobuf/text_format.h>
+#include <google/protobuf/io/zero_copy_stream_impl.h>
+#include "string_int_label_map.pb.h"
+
+using namespace std;
+
+void ListAllItem(const object_detection::protos::StringIntLabelMap& labels) {
+    for (int i = 0; i < labels.item_size(); i++) {
+        const object_detection::protos::StringIntLabelMapItem& item = labels.item(i);
+        
+        cout << "label ID: " << item.id() << endl;
+        cout << "  Name: " << item.display_name() << endl;
+    }
+}
+
+int LoadLablesFile(const string pbtxtFileName, object_detection::protos::StringIntLabelMap *imageLabels)
+{
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
+    
+#if 0 //read binary file
+    {
+        // Read the existing address book.
+        // string pbtxtFileName = [FilePathForResourceName(@"mscoco_label_map", @"txt") UTF8String];
+        fstream input(pbtxtFileName, ios::in);//, ios::in | ios::binary);
+        
+        if (!imageLabels->ParseFromIstream(&input)) {
+            cerr << "Failed to parse address book." << endl;
+            return -1;
+        }
+    }
+#else //read text format file
+    {
+        
+        //string pbtxtFileName = [FilePathForResourceName(@"mscoco_label_map", @"txt") UTF8String];
+        int fileDescriptor = open(pbtxtFileName.c_str(), O_RDONLY);
+        
+        if( fileDescriptor < 0 )
+        {
+            std::cerr << " Error opening the file " << std::endl;
+            return false;
+        }
+        
+        google::protobuf::io::FileInputStream fileInput(fileDescriptor);
+        fileInput.SetCloseOnDelete( true );
+        
+        if (!google::protobuf::TextFormat::Parse(&fileInput, imageLabels)){
+            cerr << "Failed to parse address book." << endl;
+            return -1;
+        }
+    
+    }
+#endif
+    
+    //ListAllItem(*imageLabels);
+    
+    // Optional:  Delete all global objects allocated by libprotobuf.
+    //google::protobuf::ShutdownProtobufLibrary();
+    
+    return 0;
+
+}
+
+int GetDisplayName(const object_detection::protos::StringIntLabelMap* labels, string &displayName, int index)
+{
+    int ret = -1;
+    for (int i = 0; i < labels->item_size(); i++) {
+        const object_detection::protos::StringIntLabelMapItem& item = labels->item(i);
+        if (index == item.id()) {
+            ret = 0;
+            displayName = item.display_name();
+            
+            break;
+        }
+    }
+    
+    return ret;
+}
+
+#endif
+
+
+
 NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     NSString* file_path =
     [[NSBundle mainBundle] pathForResource:name ofType:extension];
@@ -199,167 +284,21 @@ Status LoadGraph(const string& graph_file_name,
     return Status::OK();
 }
 
-// Analyzes the output of the MultiBox graph to retrieve the highest scores and
-// their positions in the tensor, which correspond to individual box detections.
-Status GetTopDetections(const std::vector<Tensor>& outputs, int how_many_labels,
-                        Tensor* indices, Tensor* scores) {
-    auto root = tensorflow::Scope::NewRootScope();
-    using namespace ::tensorflow::ops;  // NOLINT(build/namespaces)
-    
-    string output_name = "top_k";
-    TopK(root.WithOpName(output_name), outputs[0], how_many_labels);
-    // This runs the GraphDef network definition that we've just constructed, and
-    // returns the results in the output tensors.
-    tensorflow::GraphDef graph;
-    TF_RETURN_IF_ERROR(root.ToGraphDef(&graph));
-    
-    std::unique_ptr<tensorflow::Session> session(
-                                                 tensorflow::NewSession(tensorflow::SessionOptions()));
-    TF_RETURN_IF_ERROR(session->Create(graph));
-    // The TopK node returns two outputs, the scores and their original indices,
-    // so we have to append :0 and :1 to specify them both.
-    std::vector<Tensor> out_tensors;
-    TF_RETURN_IF_ERROR(session->Run({}, {output_name + ":0", output_name + ":1"},
-                                    {}, &out_tensors));
-    *scores = out_tensors[0];
-    *indices = out_tensors[1];
-    return Status::OK();
-}
-
-// Converts an encoded location to an actual box placement with the provided
-// box priors.
-void DecodeLocation(const float* encoded_location, const float* box_priors,
-                    float* decoded_location) {
-    bool non_zero = false;
-    for (int i = 0; i < 4; ++i) {
-        const float curr_encoding = encoded_location[i];
-        non_zero = non_zero || curr_encoding != 0.0f;
-        
-        const float mean = box_priors[i * 2];
-        const float std_dev = box_priors[i * 2 + 1];
-        
-        float currentLocation = curr_encoding * std_dev + mean;
-        
-        currentLocation = std::max(currentLocation, 0.0f);
-        currentLocation = std::min(currentLocation, 1.0f);
-        decoded_location[i] = currentLocation;
-    }
-    
-    if (!non_zero) {
-        LOG(WARNING) << "No non-zero encodings; check log for inference errors.";
-    }
-}
-
-float DecodeScore(float encoded_score) { return 1 / (1 + exp(-encoded_score)); }
-
-void DrawBox(const int image_width, const int image_height, int left, int top,
-             int right, int bottom, tensorflow::TTypes<uint8>::Flat* image) {
-    tensorflow::TTypes<uint8>::Flat image_ref = *image;
-    
-    top = std::max(0, std::min(image_height - 1, top));
-    bottom = std::max(0, std::min(image_height - 1, bottom));
-    
-    left = std::max(0, std::min(image_width - 1, left));
-    right = std::max(0, std::min(image_width - 1, right));
-    
-    int image_channels = 4;
-    for (int i = 0; i < 3; ++i) {
-        uint8 val = i == 2 ? 255 : 0;
-        for (int x = left; x <= right; ++x) {
-            image_ref((top * image_width + x) * image_channels + i) = val;
-            image_ref((bottom * image_width + x) * image_channels + i) = val;
-        }
-        for (int y = top; y <= bottom; ++y) {
-            image_ref((y * image_width + left) * image_channels + i) = val;
-            image_ref((y * image_width + right) * image_channels + i) = val;
-        }
-    }
-}
-
-// Given the output of a model run, and the name of a file containing the labels
-// this prints out the top five highest-scoring values.
-Status PrintTopDetections(const std::vector<Tensor>& outputs,
-                          const string& labels_file_name,
-                          const int num_boxes,
-                          const int num_detections,
-                          const string& image_file_name,
-                          Tensor* original_tensor) {
-    std::vector<float> locations;
-    size_t label_count;
-    Status read_labels_status =
-    ReadLocationsFile(labels_file_name, &locations, &label_count);
-    if (!read_labels_status.ok()) {
-        LOG(ERROR) << read_labels_status;
-        return read_labels_status;
-    }
-    CHECK_EQ(label_count, num_boxes * 8);
-    
-    const int how_many_labels =
-    std::min(num_detections, static_cast<int>(label_count));
-    Tensor indices;
-    Tensor scores;
-    TF_RETURN_IF_ERROR(
-                       GetTopDetections(outputs, how_many_labels, &indices, &scores));
-    
-    tensorflow::TTypes<float>::Flat scores_flat = scores.flat<float>();
-    
-    tensorflow::TTypes<int32>::Flat indices_flat = indices.flat<int32>();
-    
-    const Tensor& encoded_locations = outputs[1];
-    auto locations_encoded = encoded_locations.flat<float>();
-
-    LOG(INFO) << original_tensor->DebugString();
-    const int image_width = (int)original_tensor->shape().dim_size(2);
-    const int image_height = (int)original_tensor->shape().dim_size(1);
-    
-    tensorflow::TTypes<uint8>::Flat image_flat = original_tensor->flat<uint8>();
-
-    LOG(INFO) << "===== Top " << how_many_labels << " Detections ======";
-    for (int pos = 0; pos < how_many_labels; ++pos) {
-        const int label_index = indices_flat(pos);
-        const float score = scores_flat(pos);
-        
-        float decoded_location[4];
-        DecodeLocation(&locations_encoded(label_index * 4),
-                       &locations[label_index * 8], decoded_location);
-        
-        float left = decoded_location[0] * image_width;
-        float top = decoded_location[1] * image_height;
-        float right = decoded_location[2] * image_width;
-        float bottom = decoded_location[3] * image_height;
-        
-        LOG(INFO) << "Detection " << pos << ": "
-        << "L:" << left << " "
-        << "T:" << top << " "
-        << "R:" << right << " "
-        << "B:" << bottom << " "
-        << "(" << label_index << ") score: " << DecodeScore(score);
-        
-        DrawBox(image_width, image_height, left, top, right, bottom, &image_flat);
-    }
-    
-     if (!image_file_name.empty()) {
-         SaveImageFromRawData(image_file_name, original_tensor->tensor<uint8, 4>().data(), image_width, image_height, 4);
-     }
-    return Status::OK();
-}
-
 Status PrintTopDetections(std::vector<Tensor>& outputs,
-                          //const string& labels_file_name,
-                          const int num_boxes,
-                          const int num_detections,
-                          const string& image_file_name,
+                          std::vector<float>& boxScore,
+                          std::vector<float>& boxRect,
+                          std::vector<string>& boxName,
                           Tensor* original_tensor) {
     std::vector<float> locations;
     //size_t label_count;
 
     
-    //Tensor &indices = outputs;
+    Tensor &indices = outputs[2];
     Tensor &scores = outputs[1];
     
     tensorflow::TTypes<float>::Flat scores_flat = scores.flat<float>();
     
-    //tensorflow::TTypes<int32>::Flat indices_flat = indices.flat<int32>();
+    tensorflow::TTypes<float>::Flat indices_flat = indices.flat<float>();
     
     const Tensor& encoded_locations = outputs[0];
     auto locations_encoded = encoded_locations.flat<float>();
@@ -368,69 +307,66 @@ Status PrintTopDetections(std::vector<Tensor>& outputs,
     const int image_width = (int)original_tensor->shape().dim_size(2);
     const int image_height = (int)original_tensor->shape().dim_size(1);
     
-    tensorflow::TTypes<uint8>::Flat image_flat = original_tensor->flat<uint8>();
+//    tensorflow::TTypes<uint8>::Flat image_flat = original_tensor->flat<uint8>();
+    
+    
+    object_detection::protos::StringIntLabelMap imageLabels;
+    LoadLablesFile([FilePathForResourceName(@"mscoco_label_map", @"txt") UTF8String], &imageLabels);
+    
     
     for (int pos = 0; pos < 20; ++pos) {
-        //const int label_index = indices_flat(pos);
+        const int label_index = (int32)indices_flat(pos);
         const float score = scores_flat(pos);
         
-        if (score < 0.5) break;
-        
-//        float decoded_location[4];
-//        DecodeLocation(&locations_encoded(pos * 4),
-//                       &locations[pos * 8], decoded_location);
+        if (score < 0.3) break;
         
         float left = locations_encoded(pos * 4 + 1) * image_width;
         float top = locations_encoded(pos * 4 + 0) * image_height;
         float right = locations_encoded(pos * 4 + 3) * image_width;
         float bottom = locations_encoded((pos * 4 + 2)) * image_height;
         
+        string displayName = "";
+        GetDisplayName(&imageLabels, displayName, label_index);
+        
         LOG(INFO) << "Detection " << pos << ": "
         << "L:" << left << " "
         << "T:" << top << " "
         << "R:" << right << " "
         << "B:" << bottom << " "
-        << "(" << pos << ") score: " << score;
+        << "(" << pos << ") score: " << score << " Detected Name: " << displayName;
         
-        DrawBox(image_width, image_height, left, top, right, bottom, &image_flat);
+        boxScore.push_back(score);
+        boxName.push_back(displayName);
+        boxRect.push_back(left); boxRect.push_back(top); boxRect.push_back(right); boxRect.push_back(bottom);
+        
+        //DrawBox(image_width, image_height, left, top, right, bottom, &image_flat);
     }
     
-    if (!image_file_name.empty()) {
-        //SaveImageFromRawData(image_file_name, original_tensor->tensor<uint8, 4>().data(), image_width, image_height, 4);
-    }
     return Status::OK();
 }
 
 static NSString* model_file_name = @"frozen_inference_graph";//@"multibox_model";
 static NSString* model_file_type = @"pb";
 
-static NSString* image_file_name = @"image2";
-static NSString* image_file_type = @"jpg";
-
-// If you have your own model, point this to the labels file.
-static NSString* labels_file_name = @"graph";//@"multibox_location_priors";
-static NSString* labels_file_type = @"pbtxt";
-
+//static NSString* image_file_name = @"image2";
+//static NSString* image_file_type = @"jpg";
 
 
 
 int runModel(NSString* file_name, NSString* file_type,
-             void ** image_data, int *width, int *height, int *channels) {
+             void ** image_data, int *width, int *height, int *channels,
+             std::vector<float>& boxScore,
+             std::vector<float>& boxRect,
+             std::vector<string>& boxName)
+{
     string image_path = [FilePathForResourceName(file_name, file_type) UTF8String];
     string graph = [FilePathForResourceName(model_file_name, model_file_type) UTF8String];
-    string box_priors = [FilePathForResourceName(labels_file_name, labels_file_type) UTF8String];
+    //string box_priors = [FilePathForResourceName(labels_file_name, labels_file_type) UTF8String];
 
     int32 input_width = 224;
     int32 input_height = 224;
     int32 input_mean = 128;
     int32 input_std = 128;
-    int32 num_detections = 30;
-    int32 num_boxes = 784;
-//    string input_layer = "ResizeBilinear";//"image_tensor";
-//    string output_location_layer = "output_locations/Reshape";
-//    string output_score_layer = "output_scores/Reshape";
-//    string root_dir = "";
-    string image_out = "/Users/hecaiguang/Desktop/ios_result.png";
     
     
     // First we load and initialize the model.
@@ -469,6 +405,10 @@ int runModel(NSString* file_name, NSString* file_type,
     
     // Actually run the image through the model.
     std::vector<Tensor> outputs;
+    
+    
+    double a = CFAbsoluteTimeGetCurrent();
+    
     Status run_status =
 //    session->Run({{input_layer, resized_tensor}},
 //                 {output_score_layer, output_location_layer}, {}, &outputs);
@@ -479,19 +419,18 @@ int runModel(NSString* file_name, NSString* file_type,
         return -1;
     }
     
+    double b = CFAbsoluteTimeGetCurrent();
+    unsigned int m = ((b-a) * 1000.0f); // convert from seconds to milliseconds
+    NSLog(@"%@: %d ms", @"Run Model Time taken", m);
     
     tensorflow::TTypes<float>::Flat scores_flat = outputs[1].flat<float>();
     std::vector<float> v_scores;
     for(int i=0; i<10; i++)
         v_scores.push_back(scores_flat(i));
     
-//    Status print_status = PrintTopDetections(outputs, box_priors, num_boxes, num_detections, image_out,
-//                                             &image_tensors[1]);
-    Status print_status = PrintTopDetections(outputs, num_boxes, num_detections, image_out,
+    Status print_status = PrintTopDetections(outputs,
+                                             boxScore, boxRect, boxName,
                                              &image_tensors[2]);
-    
-    
-    
     
     if (!print_status.ok()) {
         LOG(ERROR) << "Running print failed: " << print_status;
@@ -505,6 +444,7 @@ int runModel(NSString* file_name, NSString* file_type,
     *width = image_width;
     *height = image_height;
     *channels = image_channels;
+    
     
     return 0;
 }
