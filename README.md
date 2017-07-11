@@ -2,6 +2,9 @@
 
 This example gives a demo of loading a SSDMobilenet model to the iOS platform and using it to do the object detection work.
 
+## Result running on iOS device
+![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
+
 ## Introduciton
 
 Recently Google released the Tensorflow Object Detection API which includes the selection of multiple models. However, the API does not contain a iOS version of implementation. Therefore, in this example, I wrote a IOS implementation of the object detection API, including the SSDMobilenet model. For this example, it maintains the same functionality as the python version of object detection API. Furthermore, the IOS code is derived from Google tensorflow ios_camera_example.
@@ -96,5 +99,17 @@ Registered devices: [CPU],     Registered kernels: device='CPU';
  ```
 Once you finish the above process, you could run the project by click the build button in the Xcode
 
-### Result
-![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
+### Label Issue
+In order to get the lable name for each detected box, you have to use proto buffer data structure. In the SSDMobilenet model, the label file is stored as a proto buffer structure, so that you need to proto's own function to extract the data. 
+
+To use proto buffer, first install it by 
+```
+brew install protobuf
+```
+Then follow https://developers.google.com/protocol-buffers/docs/cpptutorial to compile the proto buffer.
+After the compiling, you'll get a .h and a .cc files which contain the declaration and implementation of your classes.
+```
+example.pb.h
+example.pn.cc
+```
+Finally you could use the funcition in the files to extract your label data.
