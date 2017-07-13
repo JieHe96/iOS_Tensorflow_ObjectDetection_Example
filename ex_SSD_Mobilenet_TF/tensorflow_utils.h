@@ -16,8 +16,7 @@
 #define TENSORFLOW_CONTRIB_IOS_EXAMPLES_CAMERA_TENSORFLOW_UTILS_H_
 
 
-#include "tensorflow/cc/ops/standard_ops.h"
-
+#include "tensorflow/cc/ops/const_op.h"
 #include "tensorflow/core/public/session.h"
 
 NSString* FilePathForResourceName(NSString* name, NSString* extension);
