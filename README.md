@@ -113,7 +113,6 @@ Instead of using build_all_ios for the building process, we divide the process i
   - Follow the link for configuration:
   https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/ios#creating-your-own-app-from-your-source-libraries
   (ps: you need to contain a absolute path of "libtensorflow-core.a" after the "-force_load" option)
-  - After finished the above steps, add one more Header Search path named "(your tensorflow root path)/bazel_genfiles/"
   
 ### Running
 Before you run, make sure to recompile the libtensorflow-core.a according to the modified Makefile. Otherwise, following error may be generated during the runtime:
