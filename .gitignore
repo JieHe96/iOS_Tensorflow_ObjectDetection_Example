@@ -1,6 +1,3 @@
-
-ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb
-
 ssd_mobilenet_v1_coco_11_06_2017/graph.pbtxt
 
 ex_SSD_Mobilenet_TF.xcodeproj/project.xcworkspace/xcuserdata/hejie.xcuserdatad/UserInterfaceState.xcuserstate
