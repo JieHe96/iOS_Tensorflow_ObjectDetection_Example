@@ -31,9 +31,11 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path
   ### Build & Run
   
+  
 ## Result running on iOS device
 ![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
 
+## Below content is the detailed explanation and FAQs of this example
 ## Introduciton
 
 Recently Google released the Tensorflow Object Detection API which includes the selection of multiple models. However, the API does not contain a iOS version of implementation. Therefore, in this example, I wrote a IOS implementation of the object detection API, including the SSDMobilenet model. For this example, it maintains the same functionality as the python version of object detection API. Furthermore, the IOS code is derived from Google tensorflow ios_camera_example.
