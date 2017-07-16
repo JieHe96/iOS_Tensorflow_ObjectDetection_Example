@@ -43,7 +43,7 @@ GENDIR=tensorflow/contrib/makefile/gen/
 LIBDIR=${GENDIR}lib
 LIB_PREFIX=libtensorflow-core
 
-make -j"${JOB_COUNT}" -f tensorflow/contrib/makefile/Makefile \
+make -j"${JOB_COUNT}" -f tensorflow/contrib/makefile/Makefile_ios \
 TARGET=IOS IOS_ARCH=ARM64 LIB_NAME=${LIB_PREFIX}-arm64.a OPTFLAGS="$1"
 if [ $? -ne 0 ]
 then
@@ -51,7 +51,7 @@ then
   exit 1
 fi
 
-make -j"${JOB_COUNT}" -f tensorflow/contrib/makefile/Makefile \
+make -j"${JOB_COUNT}" -f tensorflow/contrib/makefile/Makefile_ios \
 TARGET=IOS IOS_ARCH=X86_64 LIB_NAME=${LIB_PREFIX}-x86_64.a OPTFLAGS="$1"
 if [ $? -ne 0 ]
 then

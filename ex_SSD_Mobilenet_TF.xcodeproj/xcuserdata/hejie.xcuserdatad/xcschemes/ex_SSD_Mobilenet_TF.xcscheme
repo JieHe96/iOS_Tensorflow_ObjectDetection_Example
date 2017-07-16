@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB13F7F31F0DC7E400422EB4"
-               BuildableName = "ex_SSD_Mobilenet_TFTests.xctest"
-               BlueprintName = "ex_SSD_Mobilenet_TFTests"
-               ReferencedContainer = "container:ex_SSD_Mobilenet_TF.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB13F7FE1F0DC7E400422EB4"
-               BuildableName = "ex_SSD_Mobilenet_TFUITests.xctest"
-               BlueprintName = "ex_SSD_Mobilenet_TFUITests"
-               ReferencedContainer = "container:ex_SSD_Mobilenet_TF.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

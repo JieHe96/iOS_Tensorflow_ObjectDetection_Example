@@ -1,0 +1,9 @@
+//
+//  tf_root.xcconfig
+//  ex_SSD_Mobilenet_TF
+//
+//  Created by Jack_He on 16/07/2017.
+//  Copyright © 2017 He Caiguang. All rights reserved.
+//
+
+TF_ROOT = /Users/hejie/Desktop/Tensorflow/TF_IOS/tensorflow/
