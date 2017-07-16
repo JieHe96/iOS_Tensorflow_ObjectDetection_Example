@@ -175,7 +175,7 @@ Finally you could use the funcition in the files to extract your label data.
   Invalid argument: No OpKernel was registered to support Op 'xxx' with these attrs.  Registered devices: [CPU], Registered kernels:
   <no registered kernels>
   ```
-  Solution: First check if you use the certain ops_to_register.h for the model you choose.
+  - Solution: First check if you use the certain ops_to_register.h for the model you choose.
   Then check the file "tensorflow/contrib/makefile/tf_op_files.txt" and add the "tensorflow/core/kernels/cwise_op_xxx.cc" into the txt file if it is not in there.
   
   2. Make sure you've added the  "-O3  -DANDROID_TYPES=ANDROID_TYPES_FULL -DSELECTIVE_REGISTRATION -DSUPPORT_SELECTIVE_REGISTRATION" when run the "compile_ios_tensorflow_s.sh".
@@ -185,4 +185,4 @@ Finally you could use the funcition in the files to extract your label data.
   ```
    [[Node: FeatureExtractor/InceptionV2/InceptionV2/Conv2d_1a_7x7/separable_conv2d = Conv2D[T=DT_FLOAT, data_format="NHWC", padding="VALID", strides=[1, 1, 1, 1], use_cudnn_on_gpu=true](FeatureExtractor/InceptionV2/InceptionV2/Conv2d_1a_7x7/separable_conv2d/depthwise, FeatureExtractor/InceptionV2/Conv2d_1a_7x7/pointwise_weights/read)]]
   ```
-  Solution: Because of the special structure of models, they include the GEMM function in the conv layers. However, the default Makefile does not use the GEMM for conv layer, so that you need to munually replace the line in the ops_to_register.h. In your ops_to_register.h replace the line "Conv2DOp<CPUDevice, float>" with "Conv2DUsingGemmOp< float, Im2ColConvFunctor<float, float, float, FastGemmFunctor<float, float, float>>>" and the problem will be solved.
+  - Solution: Because of the special structure of models, they include the GEMM function in the conv layers. However, the default Makefile does not use the GEMM for conv layer, so that you need to munually replace the line in the ops_to_register.h. In your ops_to_register.h replace the line "Conv2DOp<CPUDevice, float>" with "Conv2DUsingGemmOp< float, Im2ColConvFunctor<float, float, float, FastGemmFunctor<float, float, float>>>" and the problem will be solved.
