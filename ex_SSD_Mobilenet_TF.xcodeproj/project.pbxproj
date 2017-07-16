@@ -27,6 +27,7 @@
 		CB13F82C1F0DDADC00422EB4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */; };
 		CB13F82E1F0DDAE700422EB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */; };
 		E752A9F01F1B8FB60025E6D5 /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = E752A9EF1F1B8FB60025E6D5 /* mscoco_label_map.txt */; };
+		E752A9F21F1BA5EF0025E6D5 /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = E752A9F11F1BA5EF0025E6D5 /* frozen_inference_graph.pb */; };
 		E7B0BD201F14F36B00B79DEB /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E70CD4031F1B875400B71AA5 /* tf_root.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tf_root.xcconfig; sourceTree = "<group>"; };
 		E752A9EF1F1B8FB60025E6D5 /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mscoco_label_map.txt; path = ssd_mobilenet_v1_coco_11_06_2017/mscoco_label_map.txt; sourceTree = "<group>"; };
+		E752A9F11F1BA5EF0025E6D5 /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = frozen_inference_graph.pb; path = ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb; sourceTree = "<group>"; };
 		E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_int_label_map.pb.cc; sourceTree = "<group>"; };
 		E7B0BD1F1F14F36B00B79DEB /* string_int_label_map.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_int_label_map.pb.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 		CB13F8331F0DE67800422EB4 /* TF_Graph */ = {
 			isa = PBXGroup;
 			children = (
+				E752A9F11F1BA5EF0025E6D5 /* frozen_inference_graph.pb */,
 				E752A9EF1F1B8FB60025E6D5 /* mscoco_label_map.txt */,
 			);
 			name = TF_Graph;
@@ -230,6 +233,7 @@
 				CB13F8121F0DC84500422EB4 /* image2.jpg in Resources */,
 				CB13F8151F0DD36E00422EB4 /* surfers.jpg in Resources */,
 				CB13F7E91F0DC7E300422EB4 /* Main.storyboard in Resources */,
+				E752A9F21F1BA5EF0025E6D5 /* frozen_inference_graph.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
