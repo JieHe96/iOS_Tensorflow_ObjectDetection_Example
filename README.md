@@ -34,6 +34,7 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   
   
 ## Result running on iOS device
+![alt text](https://github.com/JieHe96/iOS_Tensorflow_ObjectDetection_Example/blob/master/iphone_result.png)
 ![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
 
 ## Below content is the detailed explanation and FAQs of this example
