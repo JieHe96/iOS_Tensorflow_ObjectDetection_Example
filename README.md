@@ -29,7 +29,8 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   ### Setup project in Xcode
   Open the project in Xcode
   Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path
-  ### Build & Run
+  ### Build & Run the project
+  
   
   
 ## Result running on iOS device
