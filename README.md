@@ -1,9 +1,11 @@
 # Tensorflow iOS ObjectDetection Example
 
-This example gives a demo of loading a Object Detection model to the iOS platform and using it to do the object detection work. The currently supported models are: ssd_mobilenet_v1_coco, ssd_inception_v2_coco, faster_rcnn_resnet101_coco.
+This example gives a demo of loading a Object Detection model to the iOS platform and using it to do the object detection work. The currently supported models are: <a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz">ssd_mobilenet_v1_coco</a>, ssd_inception_v2_coco, faster_rcnn_resnet101_coco.
 http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz
 http://download.tensorflow.org/models/object_detection/ssd_inception_v2_coco_11_06_2017.tar.gz
 http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_11_06_2017.tar.gz
+
+
 
 ## Result running on iOS device
 ![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
