@@ -3,7 +3,7 @@
 This example gives a demo of loading a Object Detection model to the iOS platform and using it to do the object detection work. The currently supported models are: <a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz">ssd_mobilenet_v1_coco</a>, <a href="http://download.tensorflow.org/models/object_detection/ssd_inception_v2_coco_11_06_2017.tar.gz">ssd_inception_v2_coco</a>, <a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_11_06_2017.tar.gz">faster_rcnn_resnet101_coco</a>.
 
 ## Quick Start
-  - Setup Environment Variable in Terminal:
+  ### Setup Environment Variable in Terminal
   First open the terminal, type in the following command:
   ```
   TF_ROOT="/your/tensorflow/root/"
@@ -13,7 +13,7 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   ```
   cat RELEASE.md | grep "1.2.0"  #make sure the output is "Relase 1.2.0"
   ```
-  - Setup Config Files
+  ### Setup Config Files
   First get to your downloaded example repository, then type in the following command:
   ```
   cp config/build_all_ios_ssd.sh $TF_ROOT/tensorflow/contrib/makefile
@@ -26,10 +26,10 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   cd $TF_ROOT
   tensorflow/contrib/makefile/build_all_ios_ssd.sh
   ```
-  - Setup project in Xcode
+  ### Setup project in Xcode
   Open the project in Xcode
   Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path
-  - Build & Run
+  ### Build & Run
   
 ## Result running on iOS device
 ![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
