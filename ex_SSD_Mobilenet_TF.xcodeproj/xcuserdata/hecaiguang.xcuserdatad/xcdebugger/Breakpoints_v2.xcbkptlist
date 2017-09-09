@@ -14,9 +14,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "456"
-            endingLineNumber = "456"
-            landmarkName = "runModel(NSString* file_name, NSString* file_type, void ** image_data, int *width, int *height, int *channels)"
-            landmarkType = "9">
+            endingLineNumber = "456">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,9 +28,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "490"
-            endingLineNumber = "490"
-            landmarkName = "runModel(NSString* file_name, NSString* file_type, void ** image_data, int *width, int *height, int *channels)"
-            landmarkType = "9">
+            endingLineNumber = "490">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,9 +42,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "475"
-            endingLineNumber = "475"
-            landmarkName = "runModel(NSString* file_name, NSString* file_type, void ** image_data, int *width, int *height, int *channels)"
-            landmarkType = "9">
+            endingLineNumber = "475">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

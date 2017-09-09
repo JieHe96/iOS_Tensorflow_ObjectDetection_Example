@@ -318,7 +318,7 @@ Status PrintTopDetections(std::vector<Tensor>& outputs,
         const int label_index = (int32)indices_flat(pos);
         const float score = scores_flat(pos);
         
-        if (score < 0.35) break;
+        if (score < 0.55) break;
         
         float left = locations_encoded(pos * 4 + 1) * image_width;
         float top = locations_encoded(pos * 4 + 0) * image_height;
@@ -345,7 +345,7 @@ Status PrintTopDetections(std::vector<Tensor>& outputs,
     return Status::OK();
 }
 
-static NSString* model_file_name = @"frozen_inference_graph";//@"multibox_model"; frozen
+static NSString* model_file_name = @"op_inference_graph";//@"multibox_model"; frozen
 static NSString* model_file_type = @"pb";
 
 //static NSString* image_file_name = @"image2";

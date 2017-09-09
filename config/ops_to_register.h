@@ -28,8 +28,9 @@
       };
     }  // end namespace
     constexpr const char* kNecessaryOpKernelClasses[] = {
-"BinaryOp<CPUDevice, functor::add<float>>",
-"BinaryOp<CPUDevice, functor::add<int32>>",
+"BinaryOp< CPUDevice, functor::add<float>>",
+"BinaryOp< CPUDevice, functor::add<int32>>",
+"AddNOp< CPUDevice, float>",
 "ReductionOp<CPUDevice, bool, Eigen::internal::AndReducer>",
 "AssertOp",
 "AvgPoolingOp<CPUDevice, float>",
@@ -38,34 +39,36 @@
 "ConcatV2Op<CPUDevice, ::tensorflow::int32>",
 "ConcatV2Op<CPUDevice, float>",
 "ConstantOp",
+//"Conv2DOp<CPUDevice, float>",
 "Conv2DUsingGemmOp< float, Im2ColConvFunctor<float, float, float, FastGemmFunctor<float, float, float>>>",
-"CropAndResizeOp<CPUDevice, float>",
 "DepthwiseConv2dNativeOp<CPUDevice, float>",
+"CropAndResizeOp<CPUDevice, float>",
+"DequantizeOp<CPUDevice, quint8>",
 "EnterOp",
-"BinaryOp<CPUDevice, functor::equal_to<int32>>",
+"BinaryOp< CPUDevice, functor::equal_to<int32>>",
 "ExitOp",
-"UnaryOp<CPUDevice, functor::exp<float>>",
+"UnaryOp< CPUDevice, functor::exp<float>>",
 "ExpandDimsOp",
 "FillOp<CPUDevice, ::tensorflow::int32>",
 "FillOp<CPUDevice, float>",
 "GatherOp<CPUDevice, float, int32>",
-"BinaryOp<CPUDevice, functor::greater<float>>",
-"BinaryOp<CPUDevice, functor::greater<int32>>",
-"BinaryOp<CPUDevice, functor::greater_equal<int32>>",
+"BinaryOp< CPUDevice, functor::greater<float>>",
+"BinaryOp< CPUDevice, functor::greater<int32>>",
+"BinaryOp< CPUDevice, functor::greater_equal<int32>>",
 "IdentityOp",
-"BinaryOp<CPUDevice, functor::less<int32>>",
+"BinaryOp< CPUDevice, functor::less<int32>>",
 "BinaryOp<CPUDevice, functor::logical_and>",
 "LoopCondOp",
 "MatMulOp<CPUDevice, float, false >",
 "ReductionOp<CPUDevice, ::tensorflow::int32, Eigen::internal::MaxReducer<::tensorflow::int32>>",
 "MaxPoolingOp<CPUDevice, float>",
-"BinaryOp<CPUDevice, functor::maximum<float>>",
+"BinaryOp< CPUDevice, functor::maximum<float>>",
 "ReductionOp<CPUDevice, float, Eigen::internal::MeanReducer<float>>",
 "MergeOp",
-"BinaryOp<CPUDevice, functor::minimum<float>>",
-"BinaryOp<CPUDevice, functor::minimum<int32>>",
-"BinaryOp<CPUDevice, functor::mul<float>>",
-"BinaryOp<CPUDevice, functor::mul<int32>>",
+"BinaryOp< CPUDevice, functor::minimum<float>>",
+"BinaryOp< CPUDevice, functor::minimum<int32>>",
+"BinaryOp< CPUDevice, functor::mul<float>>",
+"BinaryOp< CPUDevice, functor::mul<int32>>",
 "NextIterationOp",
 "NoOp",
 "NonMaxSuppressionOp<CPUDevice>",
@@ -73,29 +76,28 @@
 "PackOp<CPUDevice, float>",
 "PadOp<CPUDevice, float>",
 "PlaceholderOp",
-"ReductionOp<CPUDevice, ::tensorflow::int32, Eigen::internal::ProdReducer<::tensorflow::int32>>",
 "RangeOp<::tensorflow::int32>",
 "RankOp",
-"BinaryOp<CPUDevice, functor::div<float>>",
+"BinaryOp< CPUDevice, functor::div<float>>",
 "ReluOp<CPUDevice, float>",
 "Relu6Op<CPUDevice, float>",
 "ReshapeOp",
 "ResizeBilinearOp<CPUDevice, float>",
-"UnaryOp<CPUDevice, functor::round<float>>",
-"UnaryOp<CPUDevice, functor::rsqrt<float>>",
+"UnaryOp< CPUDevice, functor::round<float>>",
+"UnaryOp< CPUDevice, functor::rsqrt<float>>",
 "ShapeOp<int32>",
-"UnaryOp<CPUDevice, functor::sigmoid<float>>",
+"UnaryOp< CPUDevice, functor::sigmoid<float>>",
 "SizeOp<int32>",
 "SliceOp<CPUDevice, ::tensorflow::int32>",
 "SliceOp<CPUDevice, float>",
 "SoftmaxOp<CPUDevice, float>",
 "SplitOpCPU<float>",
-"UnaryOp<CPUDevice, functor::sqrt<float>>",
+"UnaryOp< CPUDevice, functor::sqrt<float>>",
 "SqueezeOp",
 "StridedSliceOp<CPUDevice, ::tensorflow::int32>",
 "StridedSliceOp<CPUDevice, float>",
-"BinaryOp<CPUDevice, functor::sub<float>>",
-"BinaryOp<CPUDevice, functor::sub<int32>>",
+"BinaryOp< CPUDevice, functor::sub<float>>",
+"BinaryOp< CPUDevice, functor::sub<int32>>",
 "SwitchOp",
 "TensorArrayPackOrGatherOp<CPUDevice, float, false >",
 "TensorArrayReadOp<CPUDevice, float>",
@@ -104,12 +106,12 @@
 "TensorArrayOp",
 "TensorArrayWriteOp<CPUDevice, float>",
 "TileOp<CPUDevice>",
-"TopK<float>",
+"TopK<CPUDevice, float>",
 "TransposeCpuOp",
 "UnpackOp<CPUDevice, ::tensorflow::int32>",
 "UnpackOp<CPUDevice, float>",
-"WhereOp<CPUDevice>",
-"ZerosLikeOp<CPUDevice, float>",
+"WhereCPUOp<CPUDevice>",
+"ZerosLikeOp< CPUDevice, float>",
 "RecvOp",
 "SendOp",
 };
@@ -118,6 +120,7 @@
 constexpr inline bool ShouldRegisterOp(const char op[]) {
   return false
      || isequal(op, "Add")
+     || isequal(op, "AddN")
      || isequal(op, "All")
      || isequal(op, "Assert")
      || isequal(op, "AvgPool")
@@ -128,6 +131,7 @@ constexpr inline bool ShouldRegisterOp(const char op[]) {
      || isequal(op, "Conv2D")
      || isequal(op, "DepthwiseConv2dNative")
      || isequal(op, "CropAndResize")
+     || isequal(op, "Dequantize")
      || isequal(op, "Enter")
      || isequal(op, "Equal")
      || isequal(op, "Exit")
@@ -155,7 +159,6 @@ constexpr inline bool ShouldRegisterOp(const char op[]) {
      || isequal(op, "Pack")
      || isequal(op, "Pad")
      || isequal(op, "Placeholder")
-     || isequal(op, "Prod")
      || isequal(op, "Range")
      || isequal(op, "Rank")
      || isequal(op, "RealDiv")
@@ -163,8 +166,8 @@ constexpr inline bool ShouldRegisterOp(const char op[]) {
      || isequal(op, "Relu6")
      || isequal(op, "Reshape")
      || isequal(op, "ResizeBilinear")
-     || isequal(op, "Round")
      || isequal(op, "Rsqrt")
+     || isequal(op, "Round")
      || isequal(op, "Shape")
      || isequal(op, "Sigmoid")
      || isequal(op, "Size")
