@@ -36,6 +36,28 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
 ![alt text](https://github.com/JieHe96/iOS_Tensorflow_ObjectDetection_Example/blob/master/iphone_result.png)
 ![alt text](https://github.com/JieHe96/ios_SSDMobilenet_tensorflow_example/blob/master/ios_result.png)
 
+## Update content for TensorFlow 1.4.0
+After updating the TensorFlow to version 1.4.0, I did the following change to make sure the example could run successfully:
+1. Follow the steps in the new QuickStart section
+2. If you've tryed the previous version of this example before, then you need to re-compile the libtensorflow.a, otherwise many register will not able to be found:
+```
+cd $TF_ROOT
+rm -r tensorflow/contrib/makefile/gen/lib/ tensorflow/contrib/makefile/gen/obj/
+tensorflow/contrib/makefile/build_tflib_ssd.sh
+```
+3. In the iOS project, add the new header search, and also make sure you use the right $(TF_ROOT) in the header search:
+```
+$(TF_ROOT)/tensorflow/contrib/makefile/downloads/nsync/public/
+```
+4. In the iOS project, add the new lib search:
+```
+$(TF_ROOT)/tensorflow/contrib/makefile/gen/nsync
+```
+5. In the Makefile_ios, comment out the line:
+```
+TF_CC_SRCS += tensorflow/core/platform/default/gpu_tracer.cc
+```
+
 ## Below content is the detailed explanation and FAQs of this example
 ## Introduciton
 
