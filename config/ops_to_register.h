@@ -110,7 +110,7 @@
 "TransposeCpuOp",
 "UnpackOp<CPUDevice, ::tensorflow::int32>",
 "UnpackOp<CPUDevice, float>",
-"WhereCPUOp<CPUDevice>",
+"WhereCPUOp",
 "ZerosLikeOp< CPUDevice, float>",
 "RecvOp",
 "SendOp",
