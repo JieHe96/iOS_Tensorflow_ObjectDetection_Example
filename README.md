@@ -31,6 +31,8 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   Finally, add the "op_inference_graph.pb" to your project folder.
   #### 4.Build & Run the project
   Note: If you'd like to run other two models, download it from the above links and add the .ph file to your project.
+  #### 5.Other Model Resource
+  For other model file, please check my another <a href="https://github.com/JieHe96/tf_resource">repo</a>.
   
   
 ## Result running on iOS device
