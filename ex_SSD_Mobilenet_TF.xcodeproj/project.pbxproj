@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3875B01F94F48600338A4C /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E3875AE1F94F48600338A4C /* mscoco_label_map.txt */; };
+		1E3875B11F94F48600338A4C /* op_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 1E3875AF1F94F48600338A4C /* op_inference_graph.pb */; };
 		CB13F7E01F0DC7E300422EB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7DF1F0DC7E300422EB4 /* main.m */; };
 		CB13F7E31F0DC7E300422EB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7E21F0DC7E300422EB4 /* AppDelegate.m */; };
 		CB13F7E61F0DC7E300422EB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB13F7E51F0DC7E300422EB4 /* ViewController.m */; };
@@ -23,12 +25,12 @@
 		CB13F82A1F0DDACE00422EB4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F8291F0DDACE00422EB4 /* CoreImage.framework */; };
 		CB13F82C1F0DDADC00422EB4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */; };
 		CB13F82E1F0DDAE700422EB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */; };
-		CBF854791F5F8C9900E205F0 /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = CBF854781F5F8C9900E205F0 /* mscoco_label_map.txt */; };
-		E77D106E1F63A595006E2A40 /* op_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = E77D106D1F63A595006E2A40 /* op_inference_graph.pb */; };
 		E7B0BD201F14F36B00B79DEB /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E3875AE1F94F48600338A4C /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
+		1E3875AF1F94F48600338A4C /* op_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = op_inference_graph.pb; sourceTree = "<group>"; };
 		CB13F7DB1F0DC7E300422EB4 /* ex_SSD_Mobilenet_TF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ex_SSD_Mobilenet_TF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB13F7DF1F0DC7E300422EB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB13F7E11F0DC7E300422EB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,9 +53,7 @@
 		CB13F8291F0DDACE00422EB4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		CB13F82B1F0DDADC00422EB4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CB13F82D1F0DDAE700422EB4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CBF854781F5F8C9900E205F0 /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mscoco_label_map.txt; path = model/mscoco_label_map.txt; sourceTree = "<group>"; };
 		E70CD4031F1B875400B71AA5 /* tf_root.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tf_root.xcconfig; sourceTree = "<group>"; };
-		E77D106D1F63A595006E2A40 /* op_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = op_inference_graph.pb; path = model/ssd_mobilenet_v1_coco_11_06_2017/op_inference_graph.pb; sourceTree = "<group>"; };
 		E7B0BD1E1F14F36B00B79DEB /* string_int_label_map.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_int_label_map.pb.cc; sourceTree = "<group>"; };
 		E7B0BD1F1F14F36B00B79DEB /* string_int_label_map.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_int_label_map.pb.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,8 +150,8 @@
 		CBF854771F5F8C6F00E205F0 /* TF_Graph */ = {
 			isa = PBXGroup;
 			children = (
-				E77D106D1F63A595006E2A40 /* op_inference_graph.pb */,
-				CBF854781F5F8C9900E205F0 /* mscoco_label_map.txt */,
+				1E3875AE1F94F48600338A4C /* mscoco_label_map.txt */,
+				1E3875AF1F94F48600338A4C /* op_inference_graph.pb */,
 			);
 			name = TF_Graph;
 			sourceTree = "<group>";
@@ -187,7 +187,7 @@
 				TargetAttributes = {
 					CB13F7DA1F0DC7E300422EB4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VMTBXSF6RT;
+						DevelopmentTeam = W47M787K75;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -215,13 +215,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E77D106E1F63A595006E2A40 /* op_inference_graph.pb in Resources */,
 				CB13F7EE1F0DC7E300422EB4 /* LaunchScreen.storyboard in Resources */,
 				CB13F7EB1F0DC7E300422EB4 /* Assets.xcassets in Resources */,
-				CBF854791F5F8C9900E205F0 /* mscoco_label_map.txt in Resources */,
+				1E3875B01F94F48600338A4C /* mscoco_label_map.txt in Resources */,
 				CB13F8121F0DC84500422EB4 /* image2.jpg in Resources */,
 				CB13F8151F0DD36E00422EB4 /* surfers.jpg in Resources */,
 				CB13F7E91F0DC7E300422EB4 /* Main.storyboard in Resources */,
+				1E3875B11F94F48600338A4C /* op_inference_graph.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
-				DEVELOPMENT_TEAM = VMTBXSF6RT;
+				DEVELOPMENT_TEAM = W47M787K75;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -392,6 +392,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TF";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TF_ROOT = "/Users/hzhos/Downloads/tensorflow-master/";
 				VALID_ARCHS = arm64;
 			};
 			name = Debug;
@@ -401,7 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
-				DEVELOPMENT_TEAM = VMTBXSF6RT;
+				DEVELOPMENT_TEAM = W47M787K75;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -431,6 +432,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bstar-he.ex-SSD-Mobilenet-TF";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TF_ROOT = "/Users/hzhos/Downloads/tensorflow-master/";
 				VALID_ARCHS = arm64;
 			};
 			name = Release;

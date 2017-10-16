@@ -24,10 +24,8 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   Compile ios dependencies:
   ```
   cd $TF_ROOT
-  tensorflow/contrib/makefile/build_all_ios_ssd.sh
+  sudo sh tensorflow/contrib/makefile/build_all_ios_ssd.sh
   ```
-  ##### 2.1 Compile Other Platform
-  If you want to compile tensorflow other than X86_64/arm64 platform,you should add i386/armv7 to compile_ios_protobuf_ssd.sh and compile_ios_tensorflow_s.sh<br/>
   #### 3.Setup project in Xcode
   Open the project in Xcode
   Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path.
