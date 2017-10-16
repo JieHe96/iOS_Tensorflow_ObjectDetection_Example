@@ -6,10 +6,11 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   #### 1.Setup Environment Variable in Terminal
   First open the terminal, type in the following command:
   ```
-  export TF_ROOT=/your//tensorflow/root/
+  export TF_ROOT=/Users/Your User Id/Downloads/tensorflow-master(root)/
   ```
   Then cd to the example folder and check your tensroflow version and the correctness of your tensorflow root path:
   ```
+  cd /Users/Your User Id/Downloads/iOS_Tensorflow_ObjectDetection_Example-master/config/
   bash config.sh
   ```
   The config.sh file will automatically check your TensorFlow version and copy some files that are necessary for the compile process.
@@ -25,6 +26,8 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   cd $TF_ROOT
   tensorflow/contrib/makefile/build_all_ios_ssd.sh
   ```
+  ##### 2.1 Compile Other Platform
+  If you want to compile tensorflow other than X86_64/arm64 platform,you should add i386/armv7 to compile_ios_protobuf_ssd.sh and compile_ios_tensorflow_s.sh<br/>
   #### 3.Setup project in Xcode
   Open the project in Xcode
   Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path.
