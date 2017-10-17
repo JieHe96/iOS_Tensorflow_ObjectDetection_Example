@@ -265,6 +265,93 @@ Status ReadTensorFromImageFile(const string& file_name, const int input_height, 
     return Status::OK();
 }
 
+
+Status ReadTensorFromUIImage(UIImage* iosimage, const int input_height, const int input_width,
+                               int *width, int *height, int *channels,
+                               const float input_mean, const float input_std,
+                               std::vector<Tensor>* out_tensors) {
+    const int wanted_channels = 3;
+    
+    std::vector<tensorflow::uint8> original_image_data;
+    std::vector<tensorflow::uint8> image_data;
+    
+    int image_width, image_height, image_channels;
+    int ret = LoadImageFromUIImageAndScale(iosimage, image_width, image_height, image_channels,
+                                        input_width, input_height,
+                                        &original_image_data, &image_data);
+    
+    *width = image_width; *height = image_height; *channels = image_channels;
+    assert(image_channels >= wanted_channels && ret == 0);
+    
+    tensorflow::Tensor resized_tensor(
+                                      tensorflow::DT_FLOAT,
+                                      tensorflow::TensorShape({1, input_height, input_width, wanted_channels}));
+    auto image_tensor_mapped = resized_tensor.tensor<float, 4>();
+    
+    //change scaled image data to float and normalize
+    tensorflow::uint8* in = image_data.data();
+    float* out = image_tensor_mapped.data();
+    for (int y = 0; y < input_height; ++y) {
+        tensorflow::uint8* in_row = in + (y * input_width * image_channels);
+        float* out_row = out + (y * input_width * wanted_channels);
+        for (int x = 0; x < input_width; ++x) {
+            tensorflow::uint8* in_pixel = in_row + (x * image_channels);
+            float* out_pixel = out_row + (x * wanted_channels);
+            for (int c = 0; c < wanted_channels; ++c) {
+                out_pixel[c] = ((float)in_pixel[c] - input_mean) / input_std;
+            }
+        }
+    }
+#if 0
+    tensorflow::Tensor image_tensors_org(
+                                         tensorflow::DT_UINT8,
+                                         tensorflow::TensorShape({1, image_height, image_width, image_channels}));
+    
+    auto image_tensor_org_mapped = image_tensors_org.tensor<uint8, 4>();
+    memcpy(image_tensor_org_mapped.data(), original_image_data.data(), image_height*image_width*image_channels);
+    
+    out_tensors->push_back(resized_tensor);
+    out_tensors->push_back(image_tensors_org);
+#else
+    
+    tensorflow::Tensor image_tensors_org(
+                                         tensorflow::DT_UINT8,
+                                         tensorflow::TensorShape({1, image_height, image_width, wanted_channels}));
+    
+    auto image_tensor_org_mapped = image_tensors_org.tensor<uint8, 4>();
+    //memcpy(image_tensor_org_mapped.data(), original_image_data.data(), image_height*image_width*image_channels);
+    
+    
+    in = original_image_data.data();
+    uint8* c_out = image_tensor_org_mapped.data();
+    for (int y = 0; y < image_height; ++y) {
+        tensorflow::uint8* in_row = in + (y * image_width * image_channels);
+        uint8* out_row = c_out + (y * image_width * wanted_channels);
+        for (int x = 0; x < image_width; ++x) {
+            tensorflow::uint8* in_pixel = in_row + (x * image_channels);
+            uint8* out_pixel = out_row + (x * wanted_channels);
+            for (int c = 0; c < wanted_channels; ++c) {
+                out_pixel[c] = in_pixel[c];
+            }
+        }
+    }
+    
+    tensorflow::Tensor image_tensors_org4(
+                                          tensorflow::DT_UINT8,
+                                          tensorflow::TensorShape({1, image_height, image_width, image_channels}));
+    
+    auto image_tensor_org4_mapped = image_tensors_org4.tensor<uint8, 4>();
+    memcpy(image_tensor_org4_mapped.data(), original_image_data.data(), image_height*image_width*image_channels);
+    
+    out_tensors->push_back(resized_tensor);
+    out_tensors->push_back(image_tensors_org);
+    out_tensors->push_back(image_tensors_org4);
+    
+#endif
+
+    return Status::OK();
+}
+
 // Reads a model graph definition from disk, and creates a session object you
 // can use to run it.
 Status LoadGraph(const string& graph_file_name,
@@ -446,5 +533,74 @@ int runModel(NSString* file_name, NSString* file_type,
     *channels = image_channels;
     
     
+    return 0;
+}
+
+// runModel from memory
+int runModel(UIImage* image,
+             void ** image_data, int *width, int *height, int *channels,
+             std::vector<float>& boxScore,
+             std::vector<float>& boxRect,
+             std::vector<std::string>& boxName){
+    string graph = [FilePathForResourceName(model_file_name, model_file_type) UTF8String];
+    int32 input_width = 224;
+    int32 input_height = 224;
+    int32 input_mean = 128;
+    int32 input_std = 128;
+    
+    // First we load and initialize the model.
+    std::unique_ptr<tensorflow::Session> session;
+    //string graph_path = tensorflow::io::JoinPath(root_dir, graph);
+    Status load_graph_status = LoadGraph(graph,
+                                         &session);
+    if (!load_graph_status.ok()) {
+        LOG(ERROR) << load_graph_status;
+        return -1;
+    }
+    
+    int image_width;
+    int image_height;
+    int image_channels;
+    // Get the image from disk as a float array of numbers, resized and normalized
+    // to the specifications the main graph expects.
+    std::vector<Tensor> image_tensors;
+    Status read_tensor_status = ReadTensorFromUIImage(image, input_height, input_width,
+                                                        &image_width, &image_height, &image_channels,
+                                                        input_mean,input_std, &image_tensors);
+    if (!read_tensor_status.ok()) {
+        LOG(ERROR) << read_tensor_status;
+        return -1;
+    }
+    const Tensor& resized_tensor = image_tensors[1];
+    // Actually run the image through the model.
+    std::vector<Tensor> outputs;
+    double a = CFAbsoluteTimeGetCurrent();
+    Status run_status = session->Run({{"image_tensor", resized_tensor}},
+                 {"detection_boxes", "detection_scores", "detection_classes", "num_detections"}, {}, &outputs);
+    if (!run_status.ok()) {
+        LOG(ERROR) << "Running model failed: " << run_status;
+        return -1;
+    }
+    double b = CFAbsoluteTimeGetCurrent();
+    unsigned int m = ((b-a) * 1000.0f); // convert from seconds to milliseconds
+    NSLog(@"%@: %d ms", @"Run Model Time taken", m);
+    tensorflow::TTypes<float>::Flat scores_flat = outputs[1].flat<float>();
+    std::vector<float> v_scores;
+    for(int i=0; i<10; i++)
+        v_scores.push_back(scores_flat(i));
+    
+    Status print_status = PrintTopDetections(outputs,
+                                             boxScore, boxRect, boxName,
+                                             &image_tensors[2]);
+    
+    if (!print_status.ok()) {
+        LOG(ERROR) << "Running print failed: " << print_status;
+        return -1;
+    }
+    *image_data = malloc(image_width*image_height*image_channels+8192);
+    memcpy(*image_data, image_tensors[2].tensor<uint8, 4>().data(), image_width*image_height*image_channels);
+    *width = image_width;
+    *height = image_height;
+    *channels = image_channels;
     return 0;
 }

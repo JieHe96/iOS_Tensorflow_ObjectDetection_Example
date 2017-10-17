@@ -6,10 +6,11 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   #### 1.Setup Environment Variable in Terminal
   First open the terminal, type in the following command:
   ```
-  export TF_ROOT=/your//tensorflow/root/
+  export TF_ROOT=/Users/Your User Id/Downloads/tensorflow-master(root)/
   ```
   Then cd to the example folder and check your tensroflow version and the correctness of your tensorflow root path:
   ```
+  cd /Users/Your User Id/Downloads/iOS_Tensorflow_ObjectDetection_Example-master/config/
   bash config.sh
   ```
   The config.sh file will automatically check your TensorFlow version and copy some files that are necessary for the compile process.
@@ -23,11 +24,11 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   Compile ios dependencies:
   ```
   cd $TF_ROOT
-  tensorflow/contrib/makefile/build_all_ios_ssd.sh
+  sudo sh tensorflow/contrib/makefile/build_all_ios_ssd.sh
   ```
   #### 3.Setup project in Xcode
   Open the project in Xcode
-  Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path.
+  In Target(ex_SSD_Mobilenet_TF)->Build Settings,replace TF_ROOT with your tensor flow root’s absolute path.
   Finally, add the "op_inference_graph.pb" to your project folder.
   #### 4.Build & Run the project
   Note: If you'd like to run other two models, download it from the above links and add the .ph file to your project.

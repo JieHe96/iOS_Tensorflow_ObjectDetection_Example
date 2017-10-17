@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate> {
     UIImageView *imgView;
 }
+@property(nonatomic,retain) UIImage *image_before_process;
+@property(nonatomic,retain) UIImage *image_after_process;
 
 - (IBAction)runButton:(id)sender;
+- (IBAction)choosePhoto:(id)sender;
 
 @end
 

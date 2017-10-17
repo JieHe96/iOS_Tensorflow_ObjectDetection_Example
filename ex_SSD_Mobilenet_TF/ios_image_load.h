@@ -16,7 +16,7 @@
 #define TENSORFLOW_CONTRIB_IOS_EXAMPLES_CAMERA_IMAGE_LOAD_H_
 
 #include <vector>
-
+#import <UIKit/UIKit.h>
 #include "tensorflow/core/framework/types.h"
 
 std::vector<tensorflow::uint8> LoadImageFromFile(const char* file_name,
@@ -26,6 +26,13 @@ std::vector<tensorflow::uint8> LoadImageFromFile(const char* file_name,
 
 int
 LoadImageFromFileAndScale(const char* file_name,
+                          int& out_width, int& out_height, int& out_channels,
+                          int scale_width, int scale_height,
+                          std::vector<tensorflow::uint8> * original_image,
+                          std::vector<tensorflow::uint8> * scale_image);
+
+int
+LoadImageFromUIImageAndScale(UIImage* iosimage,
                           int& out_width, int& out_height, int& out_channels,
                           int scale_width, int scale_height,
                           std::vector<tensorflow::uint8> * original_image,
