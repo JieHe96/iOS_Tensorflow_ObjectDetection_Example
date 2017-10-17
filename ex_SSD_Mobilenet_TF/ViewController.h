@@ -10,8 +10,9 @@
 
 @interface ViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate> {
     UIImageView *imgView;
-    UIImage *image;
 }
+@property(nonatomic,retain) UIImage *image_before_process;
+@property(nonatomic,retain) UIImage *image_after_process;
 
 - (IBAction)runButton:(id)sender;
 - (IBAction)choosePhoto:(id)sender;

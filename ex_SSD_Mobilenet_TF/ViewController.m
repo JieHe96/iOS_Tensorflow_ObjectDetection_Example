@@ -23,22 +23,21 @@ static NSString* image_file_type = @"jpg";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    image = [UIImage imageNamed:image_file];
-    CGFloat imageView_X = (image.size.width > self.view.frame.size.width) ? self.view.frame.size.width : image.size.width;
+    _image_before_process = [UIImage imageNamed:image_file];
+    
+    CGFloat imageView_X = (_image_before_process.size.width > self.view.frame.size.width) ? self.view.frame.size.width : _image_before_process.size.width;
     CGFloat imageView_Y = 0.0f;
     CGFloat origin;
     
-    if(image.size.width > self.view.frame.size.width){
-        origin = self.view.frame.size.width/image.size.width;
-        imageView_Y = image.size.height*origin;
+    if(_image_before_process.size.width > self.view.frame.size.width){
+        origin = self.view.frame.size.width/_image_before_process.size.width;
+        imageView_Y = _image_before_process.size.height*origin;
     }
     
     imgView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-imageView_X)/2,
                                                                         (self.view.frame.size.height-imageView_Y)/2,
                                                                         imageView_X, imageView_Y)];
-    
-    
-    [imgView setImage:image];
+    [imgView setImage:_image_before_process];
     imgView.contentMode =  UIViewContentModeScaleAspectFit;
 
     [self.view addSubview:imgView];
@@ -58,7 +57,7 @@ static NSString* image_file_type = @"jpg";
     std::vector<std::string> boxName;
     
     //int ret = runModel(image_file_name, image_file_type, &image_data, &width, &height, &channels, boxScore, boxRect, boxName);
-    int ret=runModel(image, &image_data, &width, &height, &channels, boxScore, boxRect, boxName);
+    int ret=runModel(_image_before_process, &image_data, &width, &height, &channels, boxScore, boxRect, boxName);
     if (ret != 0 || image_data == NULL) return;
     
     //displaying running result
@@ -113,41 +112,25 @@ static NSString* image_file_type = @"jpg";
     
     
     CGImageRef toCGImage = CGBitmapContextCreateImage(context);
-    image = [[UIImage alloc] initWithCGImage:toCGImage];
+    _image_after_process = [[UIImage alloc] initWithCGImage:toCGImage];
 
-    //for test: write image to disk for simulator running 
-//    NSData * png = UIImagePNGRepresentation(image);
-//    NSString *file_str=@"/Users/hejie/Desktop/ios_result.png";
-//    
-//    [png writeToFile: file_str atomically:YES];
-    
     //displaying detected result
-    CGFloat imageView_X = (image.size.width > self.view.frame.size.width) ? self.view.frame.size.width : image.size.width;
+    /*
+    CGFloat imageView_X = (image_after_process.size.width > self.view.frame.size.width) ? self.view.frame.size.width : image_after_process.size.width;
     CGFloat imageView_Y = 0.0f;
     CGFloat origin;
     
-    if(image.size.width > self.view.frame.size.width){
-        origin = self.view.frame.size.width/image.size.width;
-        imageView_Y = image.size.height*origin;
+    if(image_after_process.size.width > self.view.frame.size.width){
+        origin = self.view.frame.size.width/image_after_process.size.width;
+        imageView_Y = image_after_process.size.height*origin;
     }
-    /*
-    UIImageView *imgView1 = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-imageView_X)/2,
-                                                           (self.view.frame.size.height-imageView_Y)/2,
-                                                           imageView_X, imageView_Y)];
-    
-    
-    [imgView1 setImage:image];
-    imgView1.contentMode =  UIViewContentModeScaleAspectFit;
-    
-    [self.view addSubview:imgView1];
     */
-    [imgView setImage:image];
-    imgView.contentMode=UIViewContentModeScaleAspectFit;
-    
     CGContextRelease(context);
     CFRelease(toCGImage);
     free(image_data);
     
+    [imgView setImage:_image_after_process];
+    imgView.contentMode=UIViewContentModeScaleAspectFill;
 }
 
 - (IBAction)choosePhoto:(id)sender {
@@ -156,7 +139,7 @@ static NSString* image_file_type = @"jpg";
     // 设置代理
     imagePickerController.delegate = self;
     // 设置是否需要做图片编辑，default NO
-    imagePickerController.allowsEditing = YES;
+    imagePickerController.allowsEditing = NO;
     // 判断数据来源是否可用
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         // 设置数据来源
@@ -173,19 +156,10 @@ static NSString* image_file_type = @"jpg";
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     // 从info中将图片取出，并加载到imageView当中
-    image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    _image_before_process = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imgView setImage:_image_before_process];
+    imgView.contentMode =  UIViewContentModeScaleAspectFill;
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    CGFloat imageView_X = (image.size.width > self.view.frame.size.width) ? self.view.frame.size.width : image.size.width;
-    CGFloat imageView_Y = 0.0f;
-    CGFloat origin;
-    
-    if(image.size.width > self.view.frame.size.width){
-        origin = self.view.frame.size.width/image.size.width;
-        imageView_Y = image.size.height*origin;
-    }
-    [imgView setImage:image];
-    imgView.contentMode =  UIViewContentModeScaleToFill;
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{

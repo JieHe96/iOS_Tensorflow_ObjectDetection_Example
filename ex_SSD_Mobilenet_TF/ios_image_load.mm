@@ -132,7 +132,7 @@ int LoadImageFromUIImageAndScale(UIImage* iosimage,
     CGContextSetInterpolationQuality(context, kCGInterpolationLow);
     CGContextDrawImage(context, CGRectMake(0, 0, width, height), image);
     CGContextRelease(context);
-    CFRelease(image);
+    //CFRelease(image);
     out_channels = channels;
     return 0;
 }
