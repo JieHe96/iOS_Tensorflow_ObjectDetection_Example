@@ -28,7 +28,7 @@ This example gives a demo of loading a Object Detection model to the iOS platfor
   ```
   #### 3.Setup project in Xcode
   Open the project in Xcode
-  Then in the "tf_root.xcconfig" replace the TF_ROOT with your tensorflow root's absolute path.
+  In Target(ex_SSD_Mobilenet_TF)->Build Settings,replace TF_ROOT with your tensor flow root’s absolute path.
   Finally, add the "op_inference_graph.pb" to your project folder.
   #### 4.Build & Run the project
   Note: If you'd like to run other two models, download it from the above links and add the .ph file to your project.

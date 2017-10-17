@@ -90,6 +90,53 @@ std::vector<uint8> LoadImageFromFile(const char* file_name,
   return result;
 }
 
+int LoadImageFromUIImageAndScale(UIImage* iosimage,
+                          int& out_width, int& out_height, int& out_channels,
+                          int scale_width, int scale_height,
+                          std::vector<uint8> * original_image,
+                          std::vector<uint8> * scale_image
+                          ) {
+    CGImageRef image=iosimage.CGImage;
+    out_width = (int)CGImageGetWidth(image);
+    out_height = (int)CGImageGetHeight(image);
+    
+    int width = scale_width;//(int)CGImageGetWidth(image);
+    int height = scale_height;//(int)CGImageGetHeight(image);
+    int channels = 4;
+    CGColorSpaceRef color_space = CGColorSpaceCreateDeviceRGB();
+    int bytes_per_row = (width * channels);
+    int bytes_in_image = (bytes_per_row * height);
+    scale_image->resize(bytes_in_image);
+    //std::vector<uint8> result(bytes_in_image);
+    const int bits_per_component = 8;
+    
+    CGContextRef context = CGBitmapContextCreate(scale_image->data(), width, height,
+                                                 bits_per_component, bytes_per_row, color_space,
+                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(color_space);
+    CGContextSetInterpolationQuality(context, kCGInterpolationLow);
+    CGContextDrawImage(context, CGRectMake(0, 0, scale_width, scale_height), image);
+    
+    CGContextRelease(context);
+    
+    width = out_width;//(int)CGImageGetWidth(image);
+    height = out_height;//(int)CGImageGetHeight(image);
+    bytes_per_row = (width * channels);
+    bytes_in_image = (bytes_per_row * height);
+    original_image->resize(bytes_in_image);
+    
+    context = CGBitmapContextCreate(original_image->data(), width, height,
+                                    bits_per_component, bytes_per_row, color_space,
+                                    kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(color_space);
+    CGContextSetInterpolationQuality(context, kCGInterpolationLow);
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), image);
+    CGContextRelease(context);
+    CFRelease(image);
+    out_channels = channels;
+    return 0;
+}
+
 int
 LoadImageFromFileAndScale(const char* file_name,
                           int& out_width, int& out_height, int& out_channels,
