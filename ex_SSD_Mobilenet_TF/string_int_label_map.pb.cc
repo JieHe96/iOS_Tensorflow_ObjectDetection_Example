@@ -19,9 +19,15 @@
 
 namespace object_detection {
 namespace protos {
-class StringIntLabelMapItemDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<StringIntLabelMapItem> {
+class StringIntLabelMapItemDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<StringIntLabelMapItem>
+     _instance;
 } _StringIntLabelMapItem_default_instance_;
-class StringIntLabelMapDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<StringIntLabelMap> {
+class StringIntLabelMapDefaultTypeInternal {
+public:
+ ::google::protobuf::internal::ExplicitlyConstructed<StringIntLabelMap>
+     _instance;
 } _StringIntLabelMap_default_instance_;
 
 namespace protobuf_string_5fint_5flabel_5fmap_2eproto {
@@ -34,21 +40,21 @@ namespace {
 }  // namespace
 
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTableField
-    const TableStruct::entries[] = {
+    const TableStruct::entries[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   {0, 0, 0, ::google::protobuf::internal::kInvalidMask, 0, 0},
 };
 
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
-    const TableStruct::aux[] = {
+    const TableStruct::aux[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ::google::protobuf::internal::AuxillaryParseTableField(),
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
-    TableStruct::schema[] = {
-  { NULL, NULL, 0, -1, -1, false },
-  { NULL, NULL, 0, -1, -1, false },
+    TableStruct::schema[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
+  { NULL, NULL, 0, -1, -1, -1, -1, NULL, false },
 };
 
-const ::google::protobuf::uint32 TableStruct::offsets[] = {
+const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StringIntLabelMapItem, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StringIntLabelMapItem, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -68,8 +74,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StringIntLabelMap, item_),
   ~0u,
 };
-
-static const ::google::protobuf::internal::MigrationSchema schemas[] = {
+static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, sizeof(StringIntLabelMapItem)},
   { 11, 17, sizeof(StringIntLabelMap)},
 };
@@ -101,29 +106,24 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }
 
 }  // namespace
-
-void TableStruct::Shutdown() {
-  _StringIntLabelMapItem_default_instance_.Shutdown();
-  delete file_level_metadata[0].reflection;
-  _StringIntLabelMap_default_instance_.Shutdown();
-  delete file_level_metadata[1].reflection;
-}
-
 void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  _StringIntLabelMapItem_default_instance_.DefaultConstruct();
-  _StringIntLabelMap_default_instance_.DefaultConstruct();
-}
+  _StringIntLabelMapItem_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_StringIntLabelMapItem_default_instance_);_StringIntLabelMap_default_instance_._instance.DefaultConstruct();
+  ::google::protobuf::internal::OnShutdownDestroyMessage(
+      &_StringIntLabelMap_default_instance_);}
 
 void InitDefaults() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
   ::google::protobuf::GoogleOnceInit(&once, &TableStruct::InitDefaultsImpl);
 }
+namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
-  static const char descriptor[] = {
+  static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\032string_int_label_map.proto\022\027object_det"
       "ection.protos\"G\n\025StringIntLabelMapItem\022\014"
       "\n\004name\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\024\n\014display_name"
@@ -135,14 +135,14 @@ void AddDescriptorsImpl() {
       descriptor, 209);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "string_int_label_map.proto", &protobuf_RegisterTypes);
-  ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
 }
+} // anonymous namespace
 
 void AddDescriptors() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
   ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
 }
-// Force AddDescriptors() to be called at static initialization time.
+// Force AddDescriptors() to be called at dynamic initialization time.
 struct StaticDescriptorInitializer {
   StaticDescriptorInitializer() {
     AddDescriptors();
@@ -228,12 +228,17 @@ StringIntLabelMapItem* StringIntLabelMapItem::New(::google::protobuf::Arena* are
 
 void StringIntLabelMapItem::Clear() {
 // @@protoc_insertion_point(message_clear_start:object_detection.protos.StringIntLabelMapItem)
-  if (_has_bits_[0 / 32] & 3u) {
-    if (has_name()) {
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 3u) {
+    if (cached_has_bits & 0x00000001u) {
       GOOGLE_DCHECK(!name_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
       (*name_.UnsafeRawStringPointer())->clear();
     }
-    if (has_display_name()) {
+    if (cached_has_bits & 0x00000002u) {
       GOOGLE_DCHECK(!display_name_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
       (*display_name_.UnsafeRawStringPointer())->clear();
     }
@@ -256,11 +261,11 @@ bool StringIntLabelMapItem::MergePartialFromCodedStream(
       // optional string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u)) {
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->name().data(), this->name().length(),
+            this->name().data(), static_cast<int>(this->name().length()),
             ::google::protobuf::internal::WireFormat::PARSE,
             "object_detection.protos.StringIntLabelMapItem.name");
         } else {
@@ -272,7 +277,7 @@ bool StringIntLabelMapItem::MergePartialFromCodedStream(
       // optional int32 id = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u)) {
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
           set_has_id();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -286,11 +291,11 @@ bool StringIntLabelMapItem::MergePartialFromCodedStream(
       // optional string display_name = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u)) {
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_display_name()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->display_name().data(), this->display_name().length(),
+            this->display_name().data(), static_cast<int>(this->display_name().length()),
             ::google::protobuf::internal::WireFormat::PARSE,
             "object_detection.protos.StringIntLabelMapItem.display_name");
         } else {
@@ -301,13 +306,11 @@ bool StringIntLabelMapItem::MergePartialFromCodedStream(
 
       default: {
       handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+        if (tag == 0) {
           goto success;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
         break;
       }
     }
@@ -331,7 +334,7 @@ void StringIntLabelMapItem::SerializeWithCachedSizes(
   // optional string name = 1;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), this->name().length(),
+      this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "object_detection.protos.StringIntLabelMapItem.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
@@ -346,7 +349,7 @@ void StringIntLabelMapItem::SerializeWithCachedSizes(
   // optional string display_name = 3;
   if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->display_name().data(), this->display_name().length(),
+      this->display_name().data(), static_cast<int>(this->display_name().length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "object_detection.protos.StringIntLabelMapItem.display_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
@@ -355,7 +358,7 @@ void StringIntLabelMapItem::SerializeWithCachedSizes(
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:object_detection.protos.StringIntLabelMapItem)
 }
@@ -371,7 +374,7 @@ void StringIntLabelMapItem::SerializeWithCachedSizes(
   // optional string name = 1;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), this->name().length(),
+      this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "object_detection.protos.StringIntLabelMapItem.name");
     target =
@@ -387,7 +390,7 @@ void StringIntLabelMapItem::SerializeWithCachedSizes(
   // optional string display_name = 3;
   if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->display_name().data(), this->display_name().length(),
+      this->display_name().data(), static_cast<int>(this->display_name().length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "object_detection.protos.StringIntLabelMapItem.display_name");
     target =
@@ -397,7 +400,7 @@ void StringIntLabelMapItem::SerializeWithCachedSizes(
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:object_detection.protos.StringIntLabelMapItem)
   return target;
@@ -410,7 +413,7 @@ size_t StringIntLabelMapItem::ByteSizeLong() const {
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
+        _internal_metadata_.unknown_fields());
   }
   if (_has_bits_[0 / 32] & 7u) {
     // optional string name = 1;
@@ -504,12 +507,13 @@ void StringIntLabelMapItem::Swap(StringIntLabelMapItem* other) {
   InternalSwap(other);
 }
 void StringIntLabelMapItem::InternalSwap(StringIntLabelMapItem* other) {
+  using std::swap;
   name_.Swap(&other->name_);
   display_name_.Swap(&other->display_name_);
-  std::swap(id_, other->id_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(id_, other->id_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata StringIntLabelMapItem::GetMetadata() const {
@@ -733,6 +737,10 @@ StringIntLabelMap* StringIntLabelMap::New(::google::protobuf::Arena* arena) cons
 
 void StringIntLabelMap::Clear() {
 // @@protoc_insertion_point(message_clear_start:object_detection.protos.StringIntLabelMap)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   item_.Clear();
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -751,7 +759,7 @@ bool StringIntLabelMap::MergePartialFromCodedStream(
       // repeated .object_detection.protos.StringIntLabelMapItem item = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u)) {
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_item()));
         } else {
@@ -762,13 +770,11 @@ bool StringIntLabelMap::MergePartialFromCodedStream(
 
       default: {
       handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+        if (tag == 0) {
           goto success;
         }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
         break;
       }
     }
@@ -789,14 +795,15 @@ void StringIntLabelMap::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   // repeated .object_detection.protos.StringIntLabelMapItem item = 1;
-  for (unsigned int i = 0, n = this->item_size(); i < n; i++) {
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->item_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->item(i), output);
+      1, this->item(static_cast<int>(i)), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:object_detection.protos.StringIntLabelMap)
 }
@@ -809,15 +816,16 @@ void StringIntLabelMap::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   // repeated .object_detection.protos.StringIntLabelMapItem item = 1;
-  for (unsigned int i = 0, n = this->item_size(); i < n; i++) {
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->item_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        1, this->item(i), deterministic, target);
+        1, this->item(static_cast<int>(i)), deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:object_detection.protos.StringIntLabelMap)
   return target;
@@ -830,16 +838,16 @@ size_t StringIntLabelMap::ByteSizeLong() const {
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
+        _internal_metadata_.unknown_fields());
   }
   // repeated .object_detection.protos.StringIntLabelMapItem item = 1;
   {
-    unsigned int count = this->item_size();
+    unsigned int count = static_cast<unsigned int>(this->item_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->item(i));
+          this->item(static_cast<int>(i)));
     }
   }
 
@@ -898,10 +906,11 @@ void StringIntLabelMap::Swap(StringIntLabelMap* other) {
   InternalSwap(other);
 }
 void StringIntLabelMap::InternalSwap(StringIntLabelMap* other) {
+  using std::swap;
   item_.InternalSwap(&other->item_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata StringIntLabelMap::GetMetadata() const {
